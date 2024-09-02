@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    width: calc(100vw - 17px); /* Adjusting for scrollbar width  */
+}
+
+/* html, body {
+    box-sizing: border-box;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* App.css */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: sans-serif;
+}

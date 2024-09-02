@@ -1,0 +1,26 @@
+// {
+//   "files": [],
+//   "references": [
+//     { "path": "./tsconfig.app.json" },
+//     { "path": "./tsconfig.node.json" }
+//   ]
+// }
+
+{
+  "compilerOptions": {
+    "baseUrl": ".",  // Set the base URL for module resolution
+    "paths": {
+      "@/*": ["src/*"]  // Alias @ to the src directory
+    },
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"],  // Include all TypeScript files in the src directory
+  "exclude": ["node_modules"]
+}
