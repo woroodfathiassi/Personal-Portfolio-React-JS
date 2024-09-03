@@ -25,7 +25,13 @@ const About: React.FC = () => {//hover:text-zinc-200
                 <div className="flex">
                     <a href="mailto:woroodassi345@gmail.com"><SiGmail className={aStyle+' hover:text-red-500 dark:hover:text-red-500'} /></a>
                     <a href="https://github.com/woroodfathiassi"><SiGithub className={aStyle+' hover:text-black dark:hover:text-white'} /></a>
-                    <a href="https://www.linkedin.com/in/worood-fathi-assi/"><FaLinkedinIn className={aStyle+' hover:text-blue-700 dark:hover:text-blue-700'} /></a>
+                    <a 
+                        href="https://www.linkedin.com/in/worood-fathi-assi/"
+                        target="_blank" 
+                        onclick="gtag('event', 'click', { 'event_category': 'LinkedIn', 'event_label': 'Profile Link' });"
+                    >
+                        <FaLinkedinIn className={aStyle+' hover:text-blue-700 dark:hover:text-blue-700'} />
+                    </a>
                 </div>
             </div>
             <div className='w-[60%] flex justify-center items-center md:w-[50%]'>

@@ -1,8 +1,11 @@
 import Input from '@/components/Input';
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 const Contact = () => {
+    document.title = "Contact | Worood Assi";
     const form = useRef(null);
     const [formData, setFormData] = useState({
         user_name: '',
@@ -15,6 +18,7 @@ const Contact = () => {
         user_email: '',
         message: ''
     });
+    const [captchaToken, setCaptchaToken] = useState(''); // <-- Added State
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -30,6 +34,11 @@ const Contact = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
+
+        if (!captchaToken) {  // <-- Check Captcha Token
+            alert('Please complete the reCAPTCHA.');
+            return;
+        }
 
         let valid = true;
         const newErrors = { user_name: '', user_email: '', message: '' };
@@ -65,6 +74,7 @@ const Contact = () => {
                         user_email: '',
                         message: ''
                     });
+                    setCaptchaToken(''); // <-- Clear Token
                     setTimeout(() => setSubmitted(false), 2000);
                 })
                 .catch((error) => {
@@ -73,6 +83,10 @@ const Contact = () => {
                 });
         }
     }
+
+    const onChange = (value) => {
+        setCaptchaToken(value); // <-- Set Token
+    };
 
     return (
         <div className="w-4/5 m-auto mt-5 p-3 rounded-md bg-white shadow-lg dark:bg-gray-800 sm:w-3/5 lg:w-2/5">
@@ -97,6 +111,10 @@ const Contact = () => {
                             <Input data={{ label: 'Message', type: 'textarea', name: 'message', value: formData.message }} onChange={handleChange} />
                             {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
                         </div>
+                        <ReCAPTCHA
+                            sitekey={import.meta.env.VITE_ReCAPTCHA_SITE_KEY}
+                            onChange={onChange}
+                        />
                         <input type="submit" name="submit" id="submit" className="bg-mainColor/50 w-full rounded-md py-2" />
                     </form>
                 </div>

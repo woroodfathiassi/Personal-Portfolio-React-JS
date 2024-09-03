@@ -31,9 +31,9 @@ export default function RootLayout(){
     }, []);
 
     return(
-        <>
+        <div className='min-h-screen flex flex-col'>
             <Header />
-            <main>
+            <main className='flex-grow'>
                 <Outlet />
                 <button
                     onClick={scrollToTop}
@@ -46,6 +46,6 @@ export default function RootLayout(){
                 </button>
             </main>
             <Footer />
-        </>
+        </div>
     );
 }

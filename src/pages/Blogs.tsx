@@ -1,6 +1,8 @@
 import BlogsList from "@/components/BlogsList";
 
+
 const BlogsPage = () => {
+    document.title = "Blogs | Worood Assi";
     
     return (
         <div className="container mx-auto py-7">

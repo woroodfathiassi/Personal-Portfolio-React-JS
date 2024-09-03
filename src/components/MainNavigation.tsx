@@ -34,10 +34,10 @@ const MainNavigation: React.FC<MainNavigationProps> = ({menuItems, UlStyle}) => 
                     ))}
                 </ul>
             </nav>
-            <nav className="pointer-events-auto flex flex-col items-center sm:hidden">
+            <nav className="pointer-events-auto flex flex-col items-center justify-center sm:hidden">
                 <button onClick={handleClick} className=""><MdOutlineMenu size={35} /></button>
                 <div className={visibleMenu ? 'block' : 'hidden'}>
-                    <div className="relative bg-zinc-100 dark:bg-zinc-800 rounded-lg p-2 w-[70vw]">
+                    <div className="fixed inset-x-4 top-20 z-50 origin-top bg-zinc-100 shadow-lg dark:bg-zinc-800 rounded-lg p-2 ">
                         <ul className=" w-full">
                         {menuItems.map((menuItem) => (
                             <NavigationItem

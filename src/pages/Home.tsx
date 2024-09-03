@@ -6,12 +6,12 @@ import ProjectsList from '@/components/ProjectsList';
 import Work from '@/components/Work';
 
 const HomePage = () => {
+    document.title = "Personal Website | Worood Assi";
     const navigate = useNavigate();
 
     const handleButtonClick = () => {
         navigate('/projects');
     };
-
     return (
         <>
             {/* <h1>Worood Assi</h1> */}

@@ -2,7 +2,9 @@ import { useEffect } from 'react';
 import ProjectsList from '@/components/ProjectsList';
 // import TypedTextCarousel from '@/utils/TypedTextCarousel';
 
+
 const ProjectsPage = () => {
+    document.title = "Projects | Worood Assi";
     useEffect(() => {
         // Scroll to the top of the page
         window.scrollTo(0, 0);

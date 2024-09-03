@@ -6,7 +6,9 @@ import FormattedDate from '@/utils/FormattedDate ';
 import { FaArrowLeftLong } from "react-icons/fa6";
 
 
+
 const BlogsDetailsPage = () => {
+    document.title = "Blog | Worood Assi";
     const navigate = useNavigate();
 
     const { blogs } = useContext(BlogsContext);

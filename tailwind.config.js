@@ -11,15 +11,7 @@ export default {
         
       },
     },
-    theme: {
-      screens: {
-        'sm': '540px',
-        'md': '768px',
-        'lg': '1024px',
-        'xl': '1280px',
-        '2xl': '1536px',
-      },
-    }
+    theme: {}
   },
   darkMode: 'class', // Add this line to enable dark mode using a class
   plugins: [],

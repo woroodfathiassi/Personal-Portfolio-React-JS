@@ -19,7 +19,10 @@ const headerUlStyle = `
     ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 `;
 
 const Header = () => {
-    const [ darkMode, setDarkMode ] = useState(false);
+    const savedDarkMode = sessionStorage.getItem('darkMode');
+    const initialDarkMode = savedDarkMode !== null ? savedDarkMode === 'true' : false;
+
+    const [darkMode, setDarkMode] = useState(initialDarkMode);
 
     useEffect(() => {
         if (darkMode) {
@@ -27,6 +30,7 @@ const Header = () => {
         } else {
             document.documentElement.classList.remove('dark');
         }
+        sessionStorage.setItem('darkMode', darkMode.toString());
     }, [darkMode]);
 
     return (

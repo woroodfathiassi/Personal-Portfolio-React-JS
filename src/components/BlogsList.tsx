@@ -6,6 +6,7 @@ import SkeletonProject from "@/components/SkeletonProject";
 
 const BlogsList = () => {
     const { blogs, isLoading } = useContext(BlogsContext);
+    // const { isLoading } = useContext(BlogsContext);
     // const blogs = [];
 
     if (isLoading) {
