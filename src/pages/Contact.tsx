@@ -75,16 +75,15 @@ const Contact = () => {
     }
 
     return (
-        <div className="w-2/5 m-auto mt-5 p-3 rounded-md bg-white shadow-lg dark:bg-gray-700 ">
+        <div className="w-4/5 m-auto mt-5 p-3 rounded-md bg-white shadow-lg dark:bg-gray-800 sm:w-3/5 lg:w-2/5">
             <h1 className="text-center text-2xl font-bold">Contact Us</h1>
-
             {submitted ? (
                 <div className="text-center text-green-500">
                     Thank you for contacting us! We'll get back to you soon.
                 </div>
             ) : (
                 <div>
-                    <p className="my-1 text-md text-zinc-600 dark:text-zinc-400">Fill out the form below and we'll get back to you as soon as possible.</p>
+                    <p className="my-1 text-md text-zinc-600 dark:text-zinc-300">Fill out the form below and we'll get back to you as soon as possible.</p>
                     <form ref={form} onSubmit={handleSubmit}>
                         <div className="mb-4">
                             <Input data={{ label: 'Name', type: 'text', name: 'user_name', value: formData.user_name }} onChange={handleChange} />

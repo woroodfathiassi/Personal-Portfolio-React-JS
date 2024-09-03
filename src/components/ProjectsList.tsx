@@ -25,8 +25,8 @@ const ProjectsList = ({ inHomePage }: ProjectsListProps) => {
         ? projects.filter((project: ProjectData) => homeProjectsIDs.includes(project.id))
         : projects;
 
-    const homeStyle ='flex flex-col gap-3 w-3/4 mt-10';
-    const projectsStyle ='grid gap-3 grid-cols-[auto_auto_auto] mt-10';
+    const homeStyle ='flex flex-col gap-3 w-[90%] mt-10 sm:w-[100%] lg:w-[100%]';
+    const projectsStyle ='grid gap-3 grid-cols-[auto] mt-10 sm:grid-cols-[auto_auto] lg:grid-cols-[auto_auto_auto]';
 
     return (
         <div className={inHomePage ? homeStyle : projectsStyle}>

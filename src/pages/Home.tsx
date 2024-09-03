@@ -19,8 +19,8 @@ const HomePage = () => {
                 <About />
             </div>
             <SkillsList />
-            <div className='container mx-auto flex justify-between items-start'>
-                <div>
+            <div className='container mx-auto flex flex-col-reverse gap-2 justify-between items-start lg:flex-row lg:gap-2'>
+                <div className='ml-5 lg:w-[50%]'>
                     <ProjectsList inHomePage />
                     <button 
                         onClick={handleButtonClick}
@@ -29,7 +29,9 @@ const HomePage = () => {
                         Show more
                     </button>
                 </div>
-                <Work />
+                <div className='ml-5 lg:w-[$0%]'>
+                    <Work />
+                </div>
             </div>
             
         </>

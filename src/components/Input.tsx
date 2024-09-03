@@ -14,7 +14,7 @@ const Input: React.FC<InputProps> = ({ data, onChange }) => {
     
     return (
         <div className="mb-4 w-full">
-            <label htmlFor={data.name} className="capitalize text-sm font-bold dark:text-gray-400">{data.label}</label>
+            <label htmlFor={data.name} className="capitalize text-sm font-bold dark:text-gray-200">{data.label}</label>
             {
                 data.type === 'textarea' ? 
                 (

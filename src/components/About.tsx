@@ -8,8 +8,8 @@ import TypedTextCarousel from "@/utils/TypedTextCarousel";
 const About: React.FC = () => {//hover:text-zinc-200
     const aStyle = "text-[24px] text-zinc-300 mr-2 bg-zinc-100 dark:bg-zinc-800 rounded-3 hover:text-[26px] dark:hover:text-zinc-100 ";
     return(
-        <div className='flex max-w-[100%] justify-center items-center my-[5rem]'>{/*  justify-center items-center*/}
-            <div className='w-[50%]'>
+        <div className='flex max-w-[100%] justify-center items-center my-[5rem] flex-col gap-10 md:flex-row sm:gap-10 '>{/*  justify-center items-center*/}
+            <div className='w-[70%] md-[50%] md:ml-3'>
                 <p className="text-2xl mb-7">About Me:</p>
                 <h1 className='text-4xl font-bold'>
                     <TypedTextCarousel 
@@ -28,7 +28,7 @@ const About: React.FC = () => {//hover:text-zinc-200
                     <a href="https://www.linkedin.com/in/worood-fathi-assi/"><FaLinkedinIn className={aStyle+' hover:text-blue-700 dark:hover:text-blue-700'} /></a>
                 </div>
             </div>
-            <div className='w-[50%] flex justify-center items-center'>
+            <div className='w-[60%] flex justify-center items-center md:w-[50%]'>
                 <figure className='w-[20rem] rounded-[1rem_2rem] overflow-hidden'>
                 {/* relative aspect-[9/11] w-44 overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl rotate-2 */}
                     <img 

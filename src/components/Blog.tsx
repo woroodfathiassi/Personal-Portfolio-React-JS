@@ -9,7 +9,7 @@ const Blog = ({ blogs }) => {
     }
 
     return (
-        <div>
+        <div className=''>
             <h1>{blog.title}</h1>
             <p>{blog.content}</p>
         </div>

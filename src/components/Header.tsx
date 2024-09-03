@@ -35,13 +35,13 @@ const Header = () => {
             <MainNavigation menuItems={menuItems} UlStyle={headerUlStyle} />
             <button 
                 onClick={() => setDarkMode(!darkMode)}
-                className='px-2 rounded-full bg-white/90 shadow-lg shadow-zinc-800/5 '
+                className='w-10 h-10 px-2 rounded-full bg-white/90 shadow-lg shadow-zinc-800/5 '
             >
                 {
                 darkMode ? 
                     <BsMoonStars size={25} className='text-[#ff395d6c] hover:text-mainColor'/> 
                 : 
-                    <TiWeatherSunny size={27} color="#606060" />
+                    <TiWeatherSunny size={25} color="#606060" />
                 }
             </button>
         </header>

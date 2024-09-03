@@ -14,7 +14,7 @@ const WorkItem = () => {
     
     return (
         <>
-            <div className='w-1/2 p-5 border-2 border-zinc-200 rounded-2xl dark:border-zinc-800'>
+            <div className='w-[90%] p-5 border-2 border-zinc-200 rounded-2xl dark:border-zinc-800 sm:w-[100%] lg:w-[100%]'>
                 <h2 className='flex gap-2 items-center mt-3 mb-7 text-md font-semibold text-zinc-900 dark:text-zinc-100'>
                     <MdOutlineWorkHistory /> My Experience
                 </h2>
