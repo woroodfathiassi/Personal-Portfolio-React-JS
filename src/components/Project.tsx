@@ -11,6 +11,7 @@ const Project = ({ Pdata }: ProjectProps) => {
 
     return (
         <a 
+            target="_blank"
             href={Pdata.link} 
             className='group p-4 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-900'
         >

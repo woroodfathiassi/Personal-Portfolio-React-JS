@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import NavigationItem from "./NavigationItem";
 import { MdOutlineMenu } from "react-icons/md";
+import AuthContext from '@/store/AuthContext';
 
 interface MenuItem {
     title: string;
@@ -15,6 +16,7 @@ interface MainNavigationProps {
 
 const MainNavigation: React.FC<MainNavigationProps> = ({menuItems, UlStyle}) => {
     const [ visibleMenu, setVisibleMenu ] = useState(false);
+    const { isLoggedIn, logout } = useContext(AuthContext);
 
     const handleClick = () => {
         setVisibleMenu(!visibleMenu);
@@ -32,6 +34,13 @@ const MainNavigation: React.FC<MainNavigationProps> = ({menuItems, UlStyle}) => 
                             isEnd={menuItem.isEnd}
                         />
                     ))}
+                    {isLoggedIn && 
+                        <li>
+                            <button className="relative block px-4 py-3 font-bold capitalize hover:text-mainColor" onClick={logout}>
+                                Logout
+                            </button>
+                        </li>
+                    }
                 </ul>
             </nav>
             <nav className="pointer-events-auto flex flex-col items-center justify-center sm:hidden">
@@ -39,17 +48,23 @@ const MainNavigation: React.FC<MainNavigationProps> = ({menuItems, UlStyle}) => 
                 <div className={visibleMenu ? 'block' : 'hidden'}>
                     <div className="fixed inset-x-4 top-20 z-50 origin-top bg-zinc-100 shadow-lg dark:bg-zinc-800 rounded-lg p-2 ">
                         <ul className=" w-full">
-                        {menuItems.map((menuItem) => (
-                            <NavigationItem
-                                key={menuItem.title}
-                                title={menuItem.title}
-                                path={menuItem.path}
-                                isEnd={menuItem.isEnd}
-                            />
-                        ))}
-                    </ul>
+                            {menuItems.map((menuItem) => (
+                                <NavigationItem
+                                    key={menuItem.title}
+                                    title={menuItem.title}
+                                    path={menuItem.path}
+                                    isEnd={menuItem.isEnd}
+                                />
+                            ))}
+                            {isLoggedIn && 
+                                <li>
+                                    <button className="relative block px-4 py-3 font-bold capitalize hover:text-mainColor" onClick={logout}>
+                                        Logout
+                                    </button>
+                                </li>
+                            }
+                        </ul>
                     </div>
-                    
                 </div>
             </nav>
         </>

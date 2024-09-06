@@ -5,13 +5,13 @@ type SkillProps = {
 
 const Skill = ({ image, title }: SkillProps) => {
     return (
-        <div className='text-center rounded-md p-5 cursor-pointer hover:bg-gray-200 dark:hover:bg-zinc-700'>
+        <div className='group flex flex-col items-center text-center rounded-md p-5 cursor-pointer hover:bg-gray-200 dark:hover:bg-zinc-700'>
             <img
                 src={image}
                 alt={title}
-                className='w-[4rem]'
+                className='w-[4rem] grayscale-[50%] group-hover:grayscale-0'
             />
-            <h2 className='font-500 uppercase'>{title}</h2>
+            <span className='uppercase'>{title}</span>
         </div>
     );
 };

@@ -1,24 +1,18 @@
-import { createContext, useState, useEffect, ReactNode, FC } from 'react';
+import React, { createContext, useState, useEffect, ReactNode, FC } from 'react';
 import { getAllMarkdown } from '@/APIs/db.config';
-
-// Define types for context
-interface Blog {
-    id: string;
-    title: string;
-    content: string;
-    description: string;
-    date: string;
-}
+import { Blog } from '@/interfaces/BlogData';
 
 interface BlogsContextType {
     blogs: Blog[];
     isLoading: boolean;
+    addBlog: (newBlog: Blog) => void;
 }
 
 // Create the context with a default value
 const BlogsContext = createContext<BlogsContextType>({
     blogs: [],
-    isLoading: true
+    isLoading: true,
+    addBlog: () => {} 
 });
 
 // Define the provider component
@@ -36,7 +30,7 @@ export const BlogsContextProvider: FC<{ children: ReactNode }> = ({ children }) 
                     console.error("No data returned from the API.");
                 }
             } catch (error) {
-                console.error("Error fetching projects:", error);
+                console.error("Error fetching blogs:", error);
             } finally {
                 setLoading(false);
             }
@@ -44,9 +38,15 @@ export const BlogsContextProvider: FC<{ children: ReactNode }> = ({ children }) 
         fetchData();
     }, []);
 
+    // Function to add a new blog
+    const addBlog = (newBlog: Blog) => {
+        setBlogs((prevBlogs) => [...prevBlogs, newBlog]);
+    };
+
     const blogsContext: BlogsContextType = {
-        blogs: blogs,
-        isLoading
+        blogs,
+        isLoading,
+        addBlog
     };
 
     return (

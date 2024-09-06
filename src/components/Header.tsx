@@ -42,10 +42,10 @@ const Header = () => {
                 className='w-10 h-10 px-2 rounded-full bg-white/90 shadow-lg shadow-zinc-800/5 '
             >
                 {
-                darkMode ? 
-                    <BsMoonStars size={25} className='text-[#ff395d6c] hover:text-mainColor'/> 
-                : 
-                    <TiWeatherSunny size={25} color="#606060" />
+                    darkMode ? 
+                        <BsMoonStars size={25} className='text-[#ff395d6c] hover:text-mainColor'/> 
+                    : 
+                        <TiWeatherSunny size={25} color="#606060" />
                 }
             </button>
         </header>

@@ -5,11 +5,13 @@ import ProjectData from '@/interfaces/ProjectData';
 interface ProjectContextType {
     projects: ProjectData[];
     isLoading: boolean;
+    addProject: (project: ProjectData) => void;
 }
 
 const ProjectContext = createContext<ProjectContextType>({
     projects: [],
-    isLoading: true
+    isLoading: true,
+    addProject: () => {}, 
 });
 
 export function ProjectContextProvider({ children }: { children: ReactNode }) {
@@ -32,13 +34,17 @@ export function ProjectContextProvider({ children }: { children: ReactNode }) {
             }
         }
         fetchData();
-
     }, []);
-    
+
+    // Function to add a new project
+    const addProject = (project: ProjectData) => {
+        setProjects((prevProjects) => [...prevProjects, project]);
+    };
 
     const projectContext: ProjectContextType = {
         projects,
-        isLoading
+        isLoading,
+        addProject,  // Include the addProject function
     };
 
     return (

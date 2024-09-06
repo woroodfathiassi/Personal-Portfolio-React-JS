@@ -8,10 +8,17 @@ export default {
       },
       fontFamily: {
         time: ['Kanit', 'thin', 'italic'],
-        
+      },
+    },container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
       },
     },
-    theme: {}
   },
   darkMode: 'class', // Add this line to enable dark mode using a class
   plugins: [],

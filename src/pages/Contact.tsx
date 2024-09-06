@@ -1,12 +1,12 @@
 import Input from '@/components/Input';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, ChangeEvent } from 'react';
 import emailjs from '@emailjs/browser';
 import ReCAPTCHA from "react-google-recaptcha";
 
 
 const Contact = () => {
     document.title = "Contact | Worood Assi";
-    const form = useRef(null);
+    const form = useRef<HTMLFormElement>(null);
     const [formData, setFormData] = useState({
         user_name: '',
         user_email: '',
@@ -20,7 +20,7 @@ const Contact = () => {
     });
     const [captchaToken, setCaptchaToken] = useState(''); // <-- Added State
 
-    function handleChange(e) {
+    function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -32,7 +32,7 @@ const Contact = () => {
         });
     }
 
-    function handleSubmit(e) {
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
         if (!captchaToken) {  // <-- Check Captcha Token
@@ -61,7 +61,7 @@ const Contact = () => {
 
         setErrors(newErrors);
 
-        if (valid) {
+        if (valid && form.current) {
             const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
             const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
             const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
@@ -84,8 +84,8 @@ const Contact = () => {
         }
     }
 
-    const onChange = (value) => {
-        setCaptchaToken(value); // <-- Set Token
+    const onChange = (value: string | null) => {
+        setCaptchaToken(value || ''); // <-- Set Token
     };
 
     return (
@@ -115,7 +115,7 @@ const Contact = () => {
                             sitekey={import.meta.env.VITE_ReCAPTCHA_SITE_KEY}
                             onChange={onChange}
                         />
-                        <input type="submit" name="submit" id="submit" className="bg-mainColor/50 w-full rounded-md py-2" />
+                        <input type="submit" name="submit" id="submit" className="bg-mainColor w-full rounded-md py-2 my-4" />
                     </form>
                 </div>
             )}

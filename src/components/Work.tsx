@@ -21,11 +21,11 @@ const WorkItem = () => {
                 {experience.map((e) => (
                     <div key={e[0]} className='flex gap-5 mb-6 p-3'>
                         <img src={e[0]} alt={e[0]} className='rounded-full w-[3rem] h-[3rem]'/>
-                        <p>
+                        <div>
                             <p className='font-bold tracking-tight text-zinc-800 dark:text-zinc-100'>{e[1]}</p>
                             <p className='text-sm text-zinc-600 dark:text-zinc-400'>{e[2]}</p>
                             <p className='text-zinc-600 font-time dark:text-zinc-400'>{e[3]}</p>
-                        </p>
+                        </div>
                     </div>
                 ))}
                 <a className="group flex gap-2 items-center justify-center rounded-lg p-1 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-800/80"

@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-
 import About from '@/components/About';
 import SkillsList from '@/components/SkillsList';
 import ProjectsList from '@/components/ProjectsList';
@@ -12,9 +11,9 @@ const HomePage = () => {
     const handleButtonClick = () => {
         navigate('/projects');
     };
+    
     return (
         <>
-            {/* <h1>Worood Assi</h1> */}
             <div className='container mx-auto py-7'>
                 <About />
             </div>
@@ -33,7 +32,6 @@ const HomePage = () => {
                     <Work />
                 </div>
             </div>
-            
         </>
     );
 };

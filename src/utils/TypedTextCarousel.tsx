@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 
-const TypedTextCarousel: React.FC<{texts: string[], typingSpeed: number, pauseDuration: number}> = 
+const TypedTextCarousel: React.FC<{ texts: string[], typingSpeed: number, pauseDuration: number }> = 
     ({ texts, typingSpeed = 150, pauseDuration = 2000 }) => {
         const [currentTextIndex, setCurrentTextIndex] = useState(0);
         const [currentText, setCurrentText] = useState('');
         const [isDeleting, setIsDeleting] = useState(false);
 
         useEffect(() => {
-            let typingTimeout;
+            let typingTimeout: NodeJS.Timeout; // Explicitly type the timeout variable
 
             const handleTyping = () => {
                 const fullText = texts[currentTextIndex];
                 setCurrentText((prevText) =>
                     isDeleting
-                    ? (fullText.substring(0, prevText.length - 1))
-                    : (fullText.substring(0, prevText.length + 1))
+                    ? fullText.substring(0, prevText.length - 1)
+                    : fullText.substring(0, prevText.length + 1)
                 );
 
                 if (!isDeleting && currentText === fullText) {
@@ -33,7 +33,7 @@ const TypedTextCarousel: React.FC<{texts: string[], typingSpeed: number, pauseDu
             return () => clearTimeout(typingTimeout);
         }, [currentText, isDeleting, texts, typingSpeed, pauseDuration, currentTextIndex]);
 
-        return currentText;
+        return <>{currentText}</>; // Wrap in a fragment or element
     };
 
 export default TypedTextCarousel;

@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseKey = import.meta.env.VITE_SUPABASE_KEY
-const supabase = createClient(supabaseUrl, supabaseKey);
+export const supabase = createClient(supabaseUrl, supabaseKey);
 
 async function getAllProjecs() {
     const { data, error } = await supabase
@@ -33,4 +33,38 @@ async function getAllMarkdown() {
     return data    
 }
 
-export { getAllProjecs, getAllMarkdown };
+async function addNewProject(title: string, description: string, link: string, date: string) {
+    const { data, error } = await supabase
+        .from('Project')  
+        .insert({title: title, description: description, link: link, date: date}) 
+        .select()  
+    
+    if (error) {
+        console.error('Error selecting data:', error)
+        return null
+    }
+    
+    return data    
+}
+
+async function addNewBlog(title: string, content: string, description: string, date: string) {
+    console.log('Title:', title);
+    console.log('Content:', content);
+    console.log('Description:', description);
+    console.log('Date:', date);
+
+    const { data, error } = await supabase
+        .from('Markdown')
+        .insert({ title: title, content: content, description: description, date: date })
+        .select();
+
+    if (error) {
+        console.error('Error selecting data:', error);
+        return null;
+    }
+
+    return data;
+}
+
+
+export { getAllProjecs, getAllMarkdown, addNewProject, addNewBlog };
