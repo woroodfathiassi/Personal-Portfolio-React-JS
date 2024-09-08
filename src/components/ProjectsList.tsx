@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import ProjectContext from '@/store/ProjectContext';
 import Project from './Project';
-import SkeletonProject from './SkeletonProject';
+import SkeletonProject from './skeletonLoading/SkeletonProject';
 import ProjectData from '@/interfaces/ProjectData';
 
 const homeProjectsIDs = [4, 3, 2];

@@ -2,7 +2,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useContext } from 'react';
 import ProjectContext from '@/store/ProjectContext';
 import Project from './Project';
-import SkeletonProject from './SkeletonProject';
+import SkeletonProject from './skeletonLoading/SkeletonProject';
 const homeProjectsIDs = [4, 3, 2];
 const ProjectsList = ({ inHomePage }) => {
     const { projects, isLoading } = useContext(ProjectContext);

@@ -17,6 +17,7 @@ import tailwindcss from "tailwindcss";
 import { resolve } from "path";
 
 export default defineConfig({
+  base: '/',
   plugins: [react()],
   css: {
     postcss: {

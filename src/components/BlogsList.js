@@ -3,7 +3,7 @@ import { useContext } from "react";
 import BlogsContext from "@/store/BolgsContext";
 import FormattedDate from "@/utils/FormattedDate ";
 import { Link } from "react-router-dom";
-import SkeletonProject from "@/components/SkeletonProject";
+import SkeletonProject from "@/components/skeletonLoading/SkeletonProject";
 const BlogsList = () => {
     const { blogs, isLoading } = useContext(BlogsContext);
     // const { isLoading } = useContext(BlogsContext);

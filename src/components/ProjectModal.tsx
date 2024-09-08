@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useRef, useContext } from 'react';
+import React, { useState, useEffect, ChangeEvent, useRef, useContext } from 'react';
 import AuthContext from '@/store/AuthContext';
 import Input from './Input';
 import { IoMdAdd } from "react-icons/io";
@@ -26,6 +26,14 @@ const ProjectModal = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleModal = () => setIsOpen(!isOpen);
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+    }, [isOpen]);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;

@@ -1,5 +1,5 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { useState, useRef, useContext } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import AuthContext from '@/store/AuthContext';
 import Input from './Input';
 import { IoMdAdd } from "react-icons/io";
@@ -23,6 +23,14 @@ const ProjectModal = () => {
     });
     const [isOpen, setIsOpen] = useState(false);
     const toggleModal = () => setIsOpen(!isOpen);
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        }
+        else {
+            document.body.style.overflow = "auto";
+        }
+    }, [isOpen]);
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
