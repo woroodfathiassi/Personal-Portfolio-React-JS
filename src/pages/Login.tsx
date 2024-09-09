@@ -77,7 +77,7 @@ const LoginPage = () => {
     };
     
     return (
-        <div className="container mx-auto py-7">
+        <div className="container mx-auto py-7 w-3/5">
             <form ref={form} onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <Input data={{ label: 'Email', type: 'email', name: 'email', value: formData.email }} onChange={handleChange} />
@@ -94,13 +94,13 @@ const LoginPage = () => {
                     />
                     {errors.recaptcha && <p className="text-red-500 text-sm">{errors.recaptcha}</p>}
                 </div>
-                <input type="submit" name="submit" id="submit" className="bg-mainColor/50 w-full rounded-md py-2" />
+                <input type="submit" name="submit" id="submit" className="bg-mainColor text-zinc-50 w-full rounded-md py-2" />
             </form>
             <button 
                 onClick={handleeSignInWithGoogle}
-                className="bg-yellow-500 flex items-center justify-center gap-3 w-full rounded-md py-2 my-3"
+                className="shadow-md py-2 text-zinc-600 flex items-center justify-center gap-3 w-full rounded-md px-3 my-6 transition-all hover:text-black hover:bg-zinc-50 dark:bg-zinc-900 dark:shadow-zinc-800 dark:text-zinc-600 dark:hover:text-zinc-500 "
             >
-                Sign in with Google <img className="w-10 h-10" src={googleIcon} alt="" />
+                Continue with Google <img className="w-6 h-6" src={googleIcon} alt="" />
             </button>
         </div>
     );

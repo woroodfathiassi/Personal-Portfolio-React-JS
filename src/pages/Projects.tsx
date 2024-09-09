@@ -5,7 +5,6 @@ import ProjectModal from '@/components/ProjectModal';
 const ProjectsPage = () => {
     document.title = "Projects | Worood Assi";
     
-
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);

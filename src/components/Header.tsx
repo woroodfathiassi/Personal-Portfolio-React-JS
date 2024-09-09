@@ -6,6 +6,7 @@ import blackLogo from '@/assets/blackLogo.png';
 import AuthContext from '@/store/AuthContext';
 import DarkThemeContext from '@/store/DarkThemeContect';
 import AccountModal from './AccountModal';
+import DarkThemeButton from './DarkThemeButton';
 
 const menuItems: { title: string, path: string, isEnd: boolean }[] = [
     { title: 'home', path: '/', isEnd: true },
@@ -69,16 +70,20 @@ const Header = () => {
                         <img src={emailInfo.picture} alt="User" className='w-[3rem] h-[3rem] rounded-full' />
                     </button>
                 )}
-                {emailInfo && isLoggedIn &&
-                    <AccountModal
+                {!isLoggedIn ? (
+                    <DarkThemeButton />
+                ) : (
+                    emailInfo && (
+                        <AccountModal
                         isOpen={isModalOpen}
                         onClose={handleCloseModal}
                         userImage={emailInfo.picture}
                         userName={emailInfo.name}
                         userEmail={emailInfo.email}
                         onLogout={handleLogout}
-                    />
-                }
+                        />
+                    )
+                )}
             </div>
         </header>
     );

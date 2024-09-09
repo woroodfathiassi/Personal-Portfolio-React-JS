@@ -46,7 +46,11 @@ const AppRouter: React.FC = () => {
                 { path: 'contact', element: <Contact /> },
                 {
                     path: 'login',
-                    element: <React.Suspense fallback={<div>Loading...</div>}><LoginPage /></React.Suspense>,
+                    element: isLoggedIn ? (
+                        <HomePage />
+                    ) : (
+                        <React.Suspense fallback={<div>Loading...</div>}><LoginPage /></React.Suspense>
+                    ),
                 },
                 { path: '*', element: <NotFound404 /> },
             ],

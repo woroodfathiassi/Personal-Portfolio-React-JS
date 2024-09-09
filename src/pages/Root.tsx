@@ -3,13 +3,13 @@ import { Outlet } from "react-router-dom";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { FaArrowTurnUp } from "react-icons/fa6";
-import DarkThemeContext from '@/store/DarkThemeContect';
-import { TiWeatherSunny } from "react-icons/ti";
-import { BsMoonStars } from "react-icons/bs";
+import AuthContext from '@/store/AuthContext';
+
+import DarkThemeButton from '@/components/DarkThemeButton';
 
 export default function RootLayout(){
     const [isVisible, setIsVisible] = useState(false);
-    const { isDark, toggleDarkMode } = useContext(DarkThemeContext);
+    const { isLoggedIn} = useContext(AuthContext);
     
     // Show button when page is scrolled down by a certain amount
     const toggleVisibility = () => {
@@ -49,17 +49,7 @@ export default function RootLayout(){
                     >
                         <FaArrowTurnUp />
                     </button>
-                    <button 
-                        onClick={toggleDarkMode}
-                        className='w-10 h-10 px-2 rounded-full bg-white/90 shadow-lg shadow-zinc-800/50'
-                    >
-                        {
-                            isDark ? 
-                                <BsMoonStars size={25} className='text-[#ff395d6c] hover:text-mainColor'/> 
-                            : 
-                                <TiWeatherSunny size={25} color="#606060" />
-                        }
-                    </button>
+                    {isLoggedIn && <DarkThemeButton /> }
                 </div>
             </main>
             <Footer />

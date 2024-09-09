@@ -10,13 +10,14 @@ const Contact = () => {
     const [formData, setFormData] = useState({
         user_name: '',
         user_email: '',
-        message: ''
+        message: '', 
     });
     const [submitted, setSubmitted] = useState(false);
     const [errors, setErrors] = useState({
         user_name: '',
         user_email: '',
-        message: ''
+        message: '',
+        recaptcha: ''
     });
     const [captchaToken, setCaptchaToken] = useState(''); // <-- Added State
 
@@ -35,13 +36,13 @@ const Contact = () => {
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
-        if (!captchaToken) {  // <-- Check Captcha Token
-            alert('Please complete the reCAPTCHA.');
-            return;
-        }
+        // if (!captchaToken) {  // <-- Check Captcha Token
+        //     alert('Please complete the reCAPTCHA.');
+        //     return;
+        // }
 
         let valid = true;
-        const newErrors = { user_name: '', user_email: '', message: '' };
+        const newErrors = { user_name: '', user_email: '', message: '', recaptcha: '' };
 
         if (formData.user_name.trim() === '') {
             newErrors.user_name = 'Name is required';
@@ -56,6 +57,10 @@ const Contact = () => {
         }
         if (formData.message.trim() === '') {
             newErrors.message = 'Message is required';
+            valid = false;
+        }
+        if (!captchaToken) {
+            newErrors.recaptcha = 'reCaptcha is required';
             valid = false;
         }
 
@@ -111,11 +116,15 @@ const Contact = () => {
                             <Input data={{ label: 'Message', type: 'textarea', name: 'message', value: formData.message }} onChange={handleChange} />
                             {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
                         </div>
-                        <ReCAPTCHA
-                            sitekey={import.meta.env.VITE_ReCAPTCHA_SITE_KEY}
-                            onChange={onChange}
-                        />
-                        <input type="submit" name="submit" id="submit" className="bg-mainColor w-full rounded-md py-2 my-4" />
+                        <div className="mb-4">
+                            <ReCAPTCHA
+                                sitekey={import.meta.env.VITE_ReCAPTCHA_SITE_KEY}
+                                onChange={onChange}
+                            />
+                            {errors.recaptcha && <p className="text-red-500 text-sm">{errors.recaptcha}</p>}
+                        </div >
+                        
+                        <input type="submit" name="submit" id="submit" className="bg-mainColor text-zinc-50 w-full rounded-md py-2 my-4" />
                     </form>
                 </div>
             )}

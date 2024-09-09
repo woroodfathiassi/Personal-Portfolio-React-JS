@@ -1,13 +1,34 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import BlogsList from "@/components/BlogsList";
 import { IoMdAdd } from "react-icons/io";
 import AuthContext from '@/store/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const BlogsPage = () => {
     document.title = "Blogs | Worood Assi";
     const { isLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+    const addedMessage = location.state?.added ? 'Blog added successfully!' : null;
+
+    useEffect(() => {
+        if (addedMessage) {
+            const timer = setTimeout(() => {
+                 // Clear the state so the message won't show up again on reload/back navigation
+                navigate(location.pathname, { replace: true, state: {} });
+        }, 2500); 
+    
+          // Clean up the timer
+            return () => clearTimeout(timer);
+        }
+    }, [addedMessage, navigate, location.pathname]);
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 10,
+            behavior: 'smooth',
+        });
+    };scrollToTop();
 
     const handleAddBlog = () => {
         navigate('/blogs/new');
@@ -27,6 +48,9 @@ const BlogsPage = () => {
                 >
                     <IoMdAdd size={35}/>
                 </button>
+            }
+            { addedMessage && 
+                <div className="text-center font-bold text-green-500">** Blog added successfully! **</div>
             }
             <BlogsList />
         </div>

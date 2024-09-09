@@ -13,8 +13,8 @@ const AccountModal: React.FC<AccountModalProps> = ({ isOpen, onClose, userImage,
     if (!isOpen) return null;
     console.log("User Image URL: ", userImage);
     return (
-        <div className="absolute mt-40 bg-white border rounded-lg p-5 shadow-lg dark:bg-gray-700 dark:border-zinc-500">
-            <button onClick={onClose} className="absolute top-2 right-2 rounded-xl w-7 h-7 text-xl font-bold border hover:shadow-md">
+        <div className="absolute mt-40 bg-white border rounded-lg p-5 shadow-lg dark:bg-gray-800 dark:border-zinc-700">
+            <button onClick={onClose} className="absolute top-2 right-2 rounded-xl w-7 h-7 text-xl font-bold border hover:shadow-md dark:border-zinc-500 dark:hover:shadow-zinc-600">
                 &times;
             </button>
             <div className="flex flex-col gap-2 items-center">

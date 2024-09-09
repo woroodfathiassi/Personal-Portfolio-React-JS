@@ -106,6 +106,7 @@ const ProjectModal = () => {
     }
 
     return (
+
         <div className=''>
             {isLoggedIn && (
                 <button
@@ -115,12 +116,10 @@ const ProjectModal = () => {
                     <IoMdAdd size={35} />
                 </button>
             )}
-
-            {isOpen && (
+            {isLoggedIn && isOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                     <div className="bg-white p-6 rounded shadow-lg max-w-md w-full dark:bg-gray-900">
                         <h2 className="text-xl font-bold mb-4">Add New Project</h2>
-
                         <form ref={form} onSubmit={handleSubmit}>
                             <div className="mb-4">
                                 <Input data={{ label: 'Project name', type: 'text', name: 'project_name', value: formData.project_name }} onChange={handleChange} />
@@ -138,7 +137,6 @@ const ProjectModal = () => {
                                 <Input data={{ label: 'Project link', type: 'text', name: 'project_link', value: formData.project_link }} onChange={handleChange} />
                                 {errors.project_link && <p className="text-red-500 text-sm">{errors.project_link}</p>}
                             </div>
-
                             <div className="flex justify-end space-x-2">
                                 <button type="button" onClick={toggleModal} className="bg-gray-500 text-white px-4 py-2 rounded">
                                     Cancel

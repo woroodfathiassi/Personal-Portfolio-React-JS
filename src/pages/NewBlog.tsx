@@ -21,7 +21,6 @@ interface Errors {
     date: string;
 }
 
-
 const NewBlogPage: React.FC = () => {
     document.title = "Add new blog | Worood Assi";
     const { addBlog } = useContext(BlogsContext);
@@ -41,13 +40,14 @@ const NewBlogPage: React.FC = () => {
         date: ''
     });
 
+    //show alert message if the changes do not save!
     useEffect(() => {
         const handleBeforeUnload = (event: any) => {
             event.preventDefault();
             event.returnValue = ''; 
         };
 
-        if(formData.title.trim() !== '' ){
+        if(formData.title.trim() !== '' || formData.description.trim() !== '' || formData.date.trim() !== '' || formData.content.trim() !== ''){
             window.addEventListener("beforeunload", handleBeforeUnload);
         }
 
@@ -55,6 +55,13 @@ const NewBlogPage: React.FC = () => {
             window.removeEventListener("beforeunload", handleBeforeUnload);
         };
     }, [formData]);
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 10,
+            behavior: 'smooth',
+        });
+    };
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -117,10 +124,12 @@ const NewBlogPage: React.FC = () => {
                     date: '',
                     content: '',
                 });
-                navigate('/blogs');
+                navigate('/blogs', {state: {added: true}});
             } else {
                 console.error('Failed to add the blog.');
             }
+        }else{
+            scrollToTop();
         }
     }
 

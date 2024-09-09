@@ -51,15 +51,6 @@ const SkeletonProject = () => {
                 <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
                 <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
             </div>
-            {/* <div className="flex flex-col gap-2 bg-zinc-100 p-6 rounded-md dark:bg-zinc-800">
-                <span className="bg-zinc-200 h-[2rem] w-[6rem] rounded-full animate-pulse dark:bg-zinc-700"></span>
-                <div className="bg-zinc-200 h-4 animate-pulse rounded-sm dark:bg-zinc-700"></div>
-                <div className="bg-zinc-200 h-6 animate-pulse rounded-sm dark:bg-zinc-700"></div>
-                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
-                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
-                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
-                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
-            </div> */}
         </div>
     );
 }
