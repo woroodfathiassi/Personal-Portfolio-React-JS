@@ -58,7 +58,7 @@ const Header = () => {
     };
 
     return (
-        <header className='flex justify-between container mx-auto py-7 bg-fuchsia-400'>
+        <header className='flex justify-between container mx-auto py-7'>
             <Link to='/'>
                 <img src={isDark ? whiteLogo : blackLogo} alt="Logo" className='w-[3rem]' />
             </Link>
