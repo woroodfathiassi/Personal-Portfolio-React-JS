@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, NavLinkProps } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 interface NavigationItemProps {
     title: string;
@@ -8,7 +8,7 @@ interface NavigationItemProps {
 }
 
 // Define a type for the className function parameter
-type NavLinkClassNameProps = Pick<NavLinkProps, 'isActive'>;
+// type NavLinkClassNameProps = Pick<NavLinkProps, 'isActive'>;
 
 const linkStyle = "relative block px-4 py-3 font-bold capitalize hover:text-mainColor";
 
@@ -17,7 +17,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({ title, path, isEnd }) =
         <li>
             <NavLink  
                 to={path}
-                className={({ isActive }: NavLinkClassNameProps) =>
+                className={({ isActive }) =>
                     isActive ? `${linkStyle} text-[#ff395e]` : linkStyle
                 }
                 end={isEnd ? true : undefined}

@@ -34,13 +34,13 @@ const MainNavigation: React.FC<MainNavigationProps> = ({menuItems, UlStyle}) => 
                             isEnd={menuItem.isEnd}
                         />
                     ))}
-                    {isLoggedIn && 
+                    {/* {isLoggedIn && 
                         <li>
                             <button className="relative block px-4 py-3 font-bold capitalize hover:text-mainColor" onClick={logout}>
                                 Logout
                             </button>
                         </li>
-                    }
+                    } */}
                 </ul>
             </nav>
             <nav className="pointer-events-auto flex flex-col items-center justify-center sm:hidden">

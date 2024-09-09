@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import MainNavigation from './MainNavigation';
-import { TiWeatherSunny } from "react-icons/ti";
-// import { BsFillMoonStarsFill } from "react-icons/bs";
-import { BsMoonStars } from "react-icons/bs";
 import whiteLogo from '@/assets/whiteLogo.png';
 import blackLogo from '@/assets/blackLogo.png';
+import AuthContext from '@/store/AuthContext';
+import DarkThemeContext from '@/store/DarkThemeContect';
+import AccountModal from './AccountModal';
 
-const menuItems: {title: string, path: string, isEnd: boolean}[] = [
-    {title: 'home', path: '/', isEnd: true},
-    {title: 'projects', path: '/projects', isEnd: false},
-    {title: 'blogs', path: '/blogs', isEnd: false},
-    {title: 'contact', path: '/contact', isEnd: false},
+const menuItems: { title: string, path: string, isEnd: boolean }[] = [
+    { title: 'home', path: '/', isEnd: true },
+    { title: 'projects', path: '/projects', isEnd: false },
+    { title: 'blogs', path: '/blogs', isEnd: false },
+    { title: 'contact', path: '/contact', isEnd: false },
 ];
 
 const headerUlStyle = `
@@ -19,35 +19,67 @@ const headerUlStyle = `
     ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 `;
 
 const Header = () => {
-    const savedDarkMode = sessionStorage.getItem('darkMode');
-    const initialDarkMode = savedDarkMode !== null ? savedDarkMode === 'true' : false;
-
-    const [darkMode, setDarkMode] = useState(initialDarkMode);
+    const [emailInfo, setEmailInfo] = useState<any | null>(null);
+    const [image, setImage] = useState();
+    const { isLoggedIn, getEmailInfo, logout } = useContext(AuthContext); 
+    const { isDark } = useContext(DarkThemeContext);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if (darkMode) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-        sessionStorage.setItem('darkMode', darkMode.toString());
-    }, [darkMode]);
+        const fetchEmailImage = async () => {
+            if (isLoggedIn && getEmailInfo) {
+                try {
+                    const info = await getEmailInfo();
+                    setEmailInfo(info);
+                    setImage(info.picture); 
+                    console.log('Image: ', image)
+                } catch (error) {
+                    console.error('Error fetching email image:', error);
+                }
+            }
+        };
+
+        fetchEmailImage();
+    }, [isLoggedIn, getEmailInfo]);
+
+    const handleClick = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleLogout = () => {
+        logout();
+        setIsModalOpen(false);
+        navigate('/');
+    };
 
     return (
         <header className='flex justify-between container mx-auto py-7'>
-            <Link to='/' ><img src={darkMode ? whiteLogo : blackLogo } alt="" className='w-[3rem]'/></Link>
+            <Link to='/'>
+                <img src={isDark ? whiteLogo : blackLogo} alt="Logo" className='w-[3rem]' />
+            </Link>
             <MainNavigation menuItems={menuItems} UlStyle={headerUlStyle} />
-            <button 
-                onClick={() => setDarkMode(!darkMode)}
-                className='w-10 h-10 px-2 rounded-full bg-white/90 shadow-lg shadow-zinc-800/5 '
-            >
-                {
-                    darkMode ? 
-                        <BsMoonStars size={25} className='text-[#ff395d6c] hover:text-mainColor'/> 
-                    : 
-                        <TiWeatherSunny size={25} color="#606060" />
+            <div className=' flex flex-col items-center justify-center'>
+                {emailInfo && isLoggedIn && (
+                    <button onClick={handleClick}>
+                        <img src={emailInfo.picture} alt="User" className='w-[3rem] h-[3rem] rounded-full' />
+                    </button>
+                )}
+                {emailInfo && isLoggedIn &&
+                    <AccountModal
+                        isOpen={isModalOpen}
+                        onClose={handleCloseModal}
+                        userImage={emailInfo.picture}
+                        userName={emailInfo.name}
+                        userEmail={emailInfo.email}
+                        onLogout={handleLogout}
+                    />
                 }
-            </button>
+            </div>
         </header>
     );
 };

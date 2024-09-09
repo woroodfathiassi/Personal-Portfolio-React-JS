@@ -2,7 +2,6 @@ import { useContext } from "react";
 import BlogsContext from "@/store/BolgsContext";
 import FormattedDate from "@/utils/FormattedDate ";
 import { Link } from "react-router-dom";
-import SkeletonProject from "@/components/skeletonLoading/SkeletonProject";
 
 const BlogsList = () => {
     const { blogs, isLoading } = useContext(BlogsContext);
@@ -10,11 +9,7 @@ const BlogsList = () => {
     // const blogs = [];
 
     if (isLoading) {
-        return (
-            <div>
-                <SkeletonProject />
-            </div>
-        );
+            SkeletonBlog();
     }
 
     if (blogs.length === 0) {
@@ -30,7 +25,6 @@ const BlogsList = () => {
                             <Link to={`/blogs/${blog.id}`} className="mt-4  text-sm font-medium text-mainColor/80 dark:text-mainColor/80">
                                 <h2 className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">{blog.title}</h2>
                                 <p className="my-2 text-sm font-thin text-zinc-600 dark:text-zinc-400">"{blog.description}"</p>
-                                {/* <MarkdownRenderer markdown={blog.content} /> */}
                                 <p className="mt-5">Read Blog &gt;</p>
                             </Link>
                         </div>
@@ -41,3 +35,19 @@ const BlogsList = () => {
 };
 
 export default BlogsList;
+
+const SkeletonBlog = () => {
+    return (
+        <div className=" container mx-auto py-7 flex flex-col gap-2">
+            <div className="flex flex-col gap-2 bg-zinc-100 p-6 rounded-md dark:bg-zinc-800">
+                <span className="bg-zinc-200 h-[2rem] w-[6rem] rounded-full animate-pulse dark:bg-zinc-700"></span>
+                <div className="bg-zinc-200 h-4 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-6 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+            </div>
+        </div>
+    );
+}

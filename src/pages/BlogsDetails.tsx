@@ -5,7 +5,6 @@ import FormattedDate from '@/utils/FormattedDate ';
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { Blog } from '@/interfaces/BlogData';
 import NotFound404 from './NotFound404';
-import SkeletonBlog from '@/components/skeletonLoading/SkeletonBlog';
 
 const MarkdownRenderer = lazy(() => import('@/components/MarkdownRenderer'));
 
@@ -56,7 +55,7 @@ const BlogsDetailsPage: React.FC = () => {
             <div className='mt-10'>
                 <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
                 <div className='w-full mt-5 lg:w-2/3'>
-                    <Suspense fallback={<SkeletonBlog />}>
+                    <Suspense fallback={SkeletonBlog()}>
                         <MarkdownRenderer markdown={blog.content} />
                     </Suspense>
                 </div>
@@ -66,3 +65,17 @@ const BlogsDetailsPage: React.FC = () => {
 };
 
 export default BlogsDetailsPage;
+
+const SkeletonBlog = () => {
+    return (
+        <div className=" container mx-auto py-7 flex flex-col gap-2">
+            <div className="flex flex-col gap-2 bg-zinc-100 p-6 rounded-md dark:bg-zinc-800">
+                <span className="bg-zinc-200 h-3 w-[6rem] animate-pulse dark:bg-zinc-700"></span>
+                <div className="bg-zinc-200 h-4 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-[5rem] animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+            </div>
+        </div>
+    );
+}

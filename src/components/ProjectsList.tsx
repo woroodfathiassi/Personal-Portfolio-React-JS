@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import ProjectContext from '@/store/ProjectContext';
 import Project from './Project';
-import SkeletonProject from './skeletonLoading/SkeletonProject';
 import ProjectData from '@/interfaces/ProjectData';
 
 const homeProjectsIDs = [4, 3, 2];
@@ -14,7 +13,7 @@ const ProjectsList = ({ inHomePage }: ProjectsListProps) => {
     const { projects, isLoading } = useContext(ProjectContext);
 
     if (isLoading) {
-        return <SkeletonProject />;
+        return SkeletonProject();
     }
 
     if (projects.length === 0) {
@@ -39,3 +38,28 @@ const ProjectsList = ({ inHomePage }: ProjectsListProps) => {
 };
 
 export default ProjectsList;
+
+const SkeletonProject = () => {
+    return (
+        <div className=" container mx-auto py-7 flex flex-col gap-2">
+            <div className="flex flex-col gap-2 bg-zinc-100 p-6 rounded-md dark:bg-zinc-800">
+                <span className="bg-zinc-200 h-[2rem] w-[6rem] rounded-full animate-pulse dark:bg-zinc-700"></span>
+                <div className="bg-zinc-200 h-4 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-6 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+            </div>
+            {/* <div className="flex flex-col gap-2 bg-zinc-100 p-6 rounded-md dark:bg-zinc-800">
+                <span className="bg-zinc-200 h-[2rem] w-[6rem] rounded-full animate-pulse dark:bg-zinc-700"></span>
+                <div className="bg-zinc-200 h-4 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-6 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+                <div className="bg-zinc-200 h-3 animate-pulse rounded-sm dark:bg-zinc-700"></div>
+            </div> */}
+        </div>
+    );
+}

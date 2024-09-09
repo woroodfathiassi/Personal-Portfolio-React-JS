@@ -8,7 +8,7 @@ import BlogsPage from './pages/Blogs';
 import BlogsDetailsPage from './pages/BlogsDetails';
 import NotFound404 from './pages/NotFound404';
 import AuthContext from '@/store/AuthContext';
-import SkeletonNewBlog from './components/skeletonLoading/SkeletonNewBlog';
+import { SkeletonNewBlog } from './pages/NewBlog';
 
 // Lazy-loaded components
 // const BlogsPage = React.lazy(() => import('./pages/Blogs'));
@@ -37,7 +37,7 @@ const AppRouter: React.FC = () => {
                 {
                     path: 'blogs/new',
                     element: isLoggedIn ? (
-                        <React.Suspense fallback={<SkeletonNewBlog />}><NewBlogPage /></React.Suspense>
+                        <React.Suspense fallback={SkeletonNewBlog()}><NewBlogPage /></React.Suspense>
                     ) : (
                         <Navigate to="/blogs" replace />
                     ),

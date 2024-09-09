@@ -5,9 +5,10 @@ interface AuthContextType {
     session: any;
     error: string | null;
     login: (email: string, password: string) => any | Promise<void>;
-    handleGoogleSignIn: () => Promise<void>;
+    handleGoogleSignIn: () => any|Promise<void>;
     logout: () => Promise<void>;
     isLoggedIn: boolean;
+    getEmailInfo: any,
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -17,6 +18,7 @@ const AuthContext = createContext<AuthContextType>({
     handleGoogleSignIn: async () => {},
     logout: async () => {},
     isLoggedIn: false,
+    getEmailInfo: () => {},
 });
 
 interface AuthProviderProps {
@@ -40,6 +42,21 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
         fetchSession();
 
+        // const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
+        //     setSession(session);
+        //     if (!session) {
+        //         localStorage.removeItem('supabase.auth.session');
+        //     } else {
+        //         localStorage.setItem('supabase.auth.session', JSON.stringify(session));
+        //     }
+        // });
+
+        // return () => {
+        //     (subscription as any)?.unsubscribe();
+        // };
+
+
+            // Listen for authentication state changes
         const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
             setSession(session);
             if (!session) {
@@ -48,9 +65,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 localStorage.setItem('supabase.auth.session', JSON.stringify(session));
             }
         });
-
+        
+        const unsubscribe = (subscription as any)?.unsubscribe;
+        
         return () => {
-            (subscription as any)?.unsubscribe();
+            if (typeof unsubscribe === 'function') {
+              unsubscribe(); // Call the function to unsubscribe
+            }
         };
     }, []);
 
@@ -79,16 +100,25 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             setError(error.message);
             console.error('Google sign-in error:', error.message);
         } else {
+            
             // Assuming session is retrieved or handled elsewhere
             // For example, you might need to fetch the session separately or use another method
             const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
-    
+            
             if (sessionError) {
                 setError(sessionError.message);
                 console.error('Error fetching session:', sessionError.message);
             } else {
                 setSession(sessionData?.session || null);
             }
+        }
+        return data;
+    };
+
+    const getEmailInfo = () => {
+        if( session !== null ){
+            const info = session.user.user_metadata;
+            return info;
         }
     };
     
@@ -108,7 +138,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const isLoggedIn = session !== null;
 
     return (
-        <AuthContext.Provider value={{ session, error, login, handleGoogleSignIn, logout, isLoggedIn }}>
+        <AuthContext.Provider value={{ session, error, login, handleGoogleSignIn, logout, isLoggedIn, getEmailInfo: getEmailInfo }}>
             {children}
         </AuthContext.Provider>
     );

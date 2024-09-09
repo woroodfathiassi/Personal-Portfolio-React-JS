@@ -12,13 +12,24 @@
     <title>Personal Website | Worood Assi</title>
     
     <!-- Google tag (gtag.js) -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9KD5SS59F"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-B9KD5SS59F');
+    <!-- <script>
+      const MEASUREMENT_ID = 'YOUR_MEASUREMENT_ID'; // Replace with your actual ID
+  
+      // Dynamically create and append the Google Analytics script
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`;
+      document.head.appendChild(script);
+  
+      // Initialize Google Analytics
+      script.onload = () => {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          window.dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', MEASUREMENT_ID);
+      };
     </script> -->
   </head>
   <body class= "dark:bg-black text-black dark:text-white">

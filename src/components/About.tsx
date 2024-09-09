@@ -8,14 +8,13 @@ import TypedTextCarousel from "@/utils/TypedTextCarousel";
 const About = () => {
     const aStyle = "text-[24px] text-zinc-300 mr-2 bg-zinc-100 dark:bg-zinc-800 rounded-3 hover:text-[26px] dark:hover:text-zinc-100 ";
 
-    // const handleGtag = () => {
-    //     if (window.gtag) {
-    //         window.gtag('event', 'click', {
-    //             event_category: 'LinkedIn',
-    //             event_label: 'Profile Link',
-    //         });
-    //     }
-    // };
+    const handleGtag = () => {
+        gtag('event', 'click', {
+            event_category: 'Social Link',
+            event_label: 'LinkedIn Profile',
+            value: 'LinkedIn'
+        });
+    };
 
     return(
         <div className='flex max-w-[100%] justify-center items-center my-[5rem] flex-col gap-10 md:flex-row sm:gap-10 '>{/*  justify-center items-center*/}
@@ -38,7 +37,7 @@ const About = () => {
                     <a 
                         href="https://www.linkedin.com/in/worood-fathi-assi/"
                         target="_blank" 
-                        // onClick={handleGtag}
+                        onClick={handleGtag}
                     >
                         <FaLinkedinIn className={aStyle+' hover:text-blue-700 dark:hover:text-blue-700'} />
                     </a>

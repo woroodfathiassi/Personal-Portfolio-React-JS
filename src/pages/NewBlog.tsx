@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { addNewBlog } from "@/APIs/db.config";
 import Input from "@/components/Input";
 // import MarkdownEditor from "@/components/MarkdownEditor";
@@ -21,6 +21,7 @@ interface Errors {
     date: string;
 }
 
+
 const NewBlogPage: React.FC = () => {
     document.title = "Add new blog | Worood Assi";
     const { addBlog } = useContext(BlogsContext);
@@ -39,6 +40,21 @@ const NewBlogPage: React.FC = () => {
         content: '', 
         date: ''
     });
+
+    useEffect(() => {
+        const handleBeforeUnload = (event: any) => {
+            event.preventDefault();
+            event.returnValue = ''; 
+        };
+
+        if(formData.title.trim() !== '' ){
+            window.addEventListener("beforeunload", handleBeforeUnload);
+        }
+
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+        };
+    }, [formData]);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -152,3 +168,23 @@ const NewBlogPage: React.FC = () => {
 };
 
 export default NewBlogPage;
+
+export const SkeletonNewBlog = () => {
+    return (
+        <div className="container mx-auto py-7 flex flex-col gap-2">
+            <div className="flex flex-col gap-2 bg-zinc-100 p-6 rounded-md dark:bg-zinc-800">
+                <span className="bg-zinc-200 h-3 w-[6rem] animate-pulse mt-3 dark:bg-zinc-700"></span>
+                <div className="bg-zinc-200 h-5 animate-pulse rounded-sm mt-2 dark:bg-zinc-700"></div>
+                <span className="bg-zinc-200 h-3 w-[6rem] animate-pulse mt-3 dark:bg-zinc-700"></span>
+                <div className="bg-zinc-200 h-5 animate-pulse rounded-sm mt-2 dark:bg-zinc-700"></div>
+                <span className="bg-zinc-200 h-3 w-[6rem] animate-pulse mt-3 dark:bg-zinc-700"></span>
+                <div className="bg-zinc-200 h-5 animate-pulse rounded-sm mt-2 dark:bg-zinc-700"></div>
+                <span className="bg-zinc-200 h-3 w-[6rem] animate-pulse mt-3 dark:bg-zinc-700"></span>
+                <div className="bg-zinc-200 h-5 animate-pulse rounded-sm mt-2 dark:bg-zinc-700"></div>
+                <span className="bg-zinc-200 h-3 w-[6rem] animate-pulse mt-3 dark:bg-zinc-700"></span>
+                <div className="bg-zinc-200 h-[10rem] animate-pulse rounded-sm mt-2 dark:bg-zinc-700"></div>
+                <span className="bg-zinc-200 h-3 w-[6rem] rounded-lg animate-pulse mt-4 dark:bg-zinc-700"></span>
+            </div>
+        </div>
+    );
+}
