@@ -73,7 +73,8 @@ const LoginPage = () => {
     };
 
     const handleeSignInWithGoogle = async () => {
-        await handleGoogleSignIn();
+        const data = await handleGoogleSignIn();
+        console.log(data)
     };
     
     return (
