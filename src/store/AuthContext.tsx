@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { supabase } from '@/APIs/db.config';
+// import { useNavigate } from 'react-router-dom';
 
 interface AuthContextType {
     session: any;
@@ -28,6 +29,7 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const [session, setSession] = useState<any>(null);
     const [error, setError] = useState<string | null>(null);
+    // const navigate = useNavigate();
 
     useEffect(() => {
         const fetchSession = async () => {
@@ -42,21 +44,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
         fetchSession();
 
-        // const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
-        //     setSession(session);
-        //     if (!session) {
-        //         localStorage.removeItem('supabase.auth.session');
-        //     } else {
-        //         localStorage.setItem('supabase.auth.session', JSON.stringify(session));
-        //     }
-        // });
-
-        // return () => {
-        //     (subscription as any)?.unsubscribe();
-        // };
-
-
-            // Listen for authentication state changes
+        // Listen for authentication state changes
         const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
             setSession(session);
             if (!session) {
@@ -112,7 +100,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 setSession(sessionData?.session || null);
             }
         }
-        return data;
     };
 
     const getEmailInfo = () => {
