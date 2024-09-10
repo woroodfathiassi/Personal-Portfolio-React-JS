@@ -6,7 +6,7 @@ import bzulogo from '@/assets/bzu-logo.png';
 import resume from '@/assets/Resume/WoroodCV.pdf';
 
 const experience = [
-    [quizplus_logo, 'Quality Assurance Automation Engineer', 'Quizplus · Internship', 'Jul 2024 - Sep 2024'],
+    [quizplus_logo, 'Front-end Developer', 'Quizplus · Internship', 'Jul 2024 - Sep 2024'],
     [bzulogo, 'Full-stack Developer', 'Computer Center - Birzeit University · Internship', 'Feb 2024 - Apr 2024'],
 ];
 

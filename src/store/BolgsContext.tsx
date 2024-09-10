@@ -15,7 +15,6 @@ const BlogsContext = createContext<BlogsContextType>({
     addBlog: () => {} 
 });
 
-// Define the provider component
 export const BlogsContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const [blogs, setBlogs] = useState<Blog[]>([]);
     const [isLoading, setLoading] = useState(true);
@@ -38,7 +37,6 @@ export const BlogsContextProvider: FC<{ children: ReactNode }> = ({ children }) 
         fetchData();
     }, []);
 
-    // Function to add a new blog
     const addBlog = (newBlog: Blog) => {
         setBlogs((prevBlogs) => [...prevBlogs, newBlog]);
     };

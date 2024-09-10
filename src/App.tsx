@@ -1,4 +1,3 @@
-import React from 'react';
 import AppRouter from './routerConfig';
 import 'prismjs/themes/prism-tomorrow.css';
 

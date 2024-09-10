@@ -1,4 +1,3 @@
-import React from "react";
 import { SiGmail } from "react-icons/si";
 import { SiGithub } from "react-icons/si";
 import { FaLinkedinIn } from "react-icons/fa6";
@@ -6,7 +5,7 @@ import myImage from '@/assets/me1.png';
 import TypedTextCarousel from "@/utils/TypedTextCarousel";
 
 const About = () => {
-    const aStyle = "text-[24px] text-zinc-300 mr-2 bg-zinc-100 dark:bg-zinc-800 rounded-3 hover:text-[26px] dark:hover:text-zinc-100 ";
+    const aStyle = "text-[24px] text-zinc-300 mr-2 bg-zinc-100 dark:bg-zinc-800 rounded-3 dark:hover:text-zinc-100 ";
 
     const handleGtag = () => {
         gtag('event', 'click', {

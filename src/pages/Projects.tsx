@@ -10,7 +10,6 @@ const ProjectsPage = () => {
     }, []);
 
     return (
-        // bg-gradient-to-r from-red-400 via-pink-300 to-green-500
         <div className='container m-auto p-3 '>
             <h1 className='text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl pt-3'>
                 Discover Projects from My University Experience

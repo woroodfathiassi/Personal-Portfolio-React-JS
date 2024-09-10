@@ -31,7 +31,6 @@ const loadGoogleAnalytics = () => {
   document.head.appendChild(script);
 };
 
-// Load the script outside of the React rendering
 loadGoogleAnalytics();
 
 

@@ -33,7 +33,7 @@ const TypedTextCarousel: React.FC<{ texts: string[], typingSpeed: number, pauseD
             return () => clearTimeout(typingTimeout);
         }, [currentText, isDeleting, texts, typingSpeed, pauseDuration, currentTextIndex]);
 
-        return <>{currentText}</>; // Wrap in a fragment or element
+        return <>{currentText}</>;
     };
 
 export default TypedTextCarousel;

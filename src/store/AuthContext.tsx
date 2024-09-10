@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useState, useEffect, ReactNode, useMemo } from 'react';
 import { supabase } from '@/APIs/db.config';
 // import { useNavigate } from 'react-router-dom';
 
@@ -82,15 +82,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const handleGoogleSignIn = async () => {
         const { error, data } = await supabase.auth.signInWithOAuth({
             provider: 'google',
+            
         });
     
         if (error) {
             setError(error.message);
             console.error('Google sign-in error:', error.message);
         } else {
-            
-            // Assuming session is retrieved or handled elsewhere
-            // For example, you might need to fetch the session separately or use another method
             const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
             
             if (sessionError) {
@@ -105,6 +103,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const getEmailInfo = () => {
         if( session !== null ){
             const info = session.user.user_metadata;
+            console.log(info)
             return info;
         }
     };
@@ -124,8 +123,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const isLoggedIn = session !== null;
 
+    const contextValue = useMemo(() => ({
+        session,
+        error,
+        login,
+        handleGoogleSignIn,
+        logout,
+        isLoggedIn,
+        getEmailInfo
+    }), [session, error]);
+
     return (
-        <AuthContext.Provider value={{ session, error, login, handleGoogleSignIn, logout, isLoggedIn, getEmailInfo: getEmailInfo }}>
+        <AuthContext.Provider value={contextValue}>
             {children}
         </AuthContext.Provider>
     );

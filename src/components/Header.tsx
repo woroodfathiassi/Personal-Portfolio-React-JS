@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import MainNavigation from './MainNavigation';
 import whiteLogo from '@/assets/whiteLogo.png';
@@ -89,4 +89,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default React.memo(Header);

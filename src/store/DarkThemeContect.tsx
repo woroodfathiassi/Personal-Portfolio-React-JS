@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 
-// Define the shape of the context
 interface DarkThemeContextType {
     isDark: boolean;
     toggleDarkMode: () => void;

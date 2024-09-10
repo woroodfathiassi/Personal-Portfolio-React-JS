@@ -19,7 +19,7 @@ const Contact = () => {
         message: '',
         recaptcha: ''
     });
-    const [captchaToken, setCaptchaToken] = useState(''); // <-- Added State
+    const [captchaToken, setCaptchaToken] = useState('');
 
     function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         const { name, value } = e.target;
@@ -35,11 +35,6 @@ const Contact = () => {
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-
-        // if (!captchaToken) {  // <-- Check Captcha Token
-        //     alert('Please complete the reCAPTCHA.');
-        //     return;
-        // }
 
         let valid = true;
         const newErrors = { user_name: '', user_email: '', message: '', recaptcha: '' };
@@ -79,18 +74,17 @@ const Contact = () => {
                         user_email: '',
                         message: ''
                     });
-                    setCaptchaToken(''); // <-- Clear Token
+                    setCaptchaToken('');
                     setTimeout(() => setSubmitted(false), 2000);
                 })
                 .catch((error) => {
                     console.log('FAILED...', error.text);
-                    // Optionally set a failure state and display an error message to the user
                 });
         }
     }
 
     const onChange = (value: string | null) => {
-        setCaptchaToken(value || ''); // <-- Set Token
+        setCaptchaToken(value || ''); 
     };
 
     return (

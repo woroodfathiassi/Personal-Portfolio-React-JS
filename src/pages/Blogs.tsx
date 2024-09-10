@@ -14,7 +14,6 @@ const BlogsPage = () => {
     useEffect(() => {
         if (addedMessage) {
             const timer = setTimeout(() => {
-                 // Clear the state so the message won't show up again on reload/back navigation
                 navigate(location.pathname, { replace: true, state: {} });
         }, 2500); 
     

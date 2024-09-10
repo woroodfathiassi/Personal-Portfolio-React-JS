@@ -36,7 +36,6 @@ export function ProjectContextProvider({ children }: { children: ReactNode }) {
         fetchData();
     }, []);
 
-    // Function to add a new project
     const addProject = (project: ProjectData) => {
         setProjects((prevProjects) => [...prevProjects, project]);
     };
@@ -44,7 +43,7 @@ export function ProjectContextProvider({ children }: { children: ReactNode }) {
     const projectContext: ProjectContextType = {
         projects,
         isLoading,
-        addProject,  // Include the addProject function
+        addProject,  
     };
 
     return (

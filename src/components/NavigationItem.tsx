@@ -5,14 +5,12 @@ interface NavigationItemProps {
     title: string;
     path: string;
     isEnd: boolean;
+    onClick: () => void;
 }
-
-// Define a type for the className function parameter
-// type NavLinkClassNameProps = Pick<NavLinkProps, 'isActive'>;
 
 const linkStyle = "relative block px-4 py-3 font-bold capitalize hover:text-mainColor";
 
-const NavigationItem: React.FC<NavigationItemProps> = ({ title, path, isEnd }) => {
+const NavigationItem: React.FC<NavigationItemProps> = ({ title, path, isEnd, onClick }) => {
     return (
         <li>
             <NavLink  
@@ -20,6 +18,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({ title, path, isEnd }) =
                 className={({ isActive }) =>
                     isActive ? `${linkStyle} text-[#ff395e]` : linkStyle
                 }
+                onClick={onClick || undefined} 
                 end={isEnd ? true : undefined}
             >
                 {title}

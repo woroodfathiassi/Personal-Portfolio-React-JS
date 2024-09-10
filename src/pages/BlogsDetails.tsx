@@ -28,12 +28,7 @@ const BlogsDetailsPage: React.FC = () => {
         return <NotFound404 />;
     }
 
-    // Ensure blogs is typed as Blog[]
     const blog = blogs.find((blog: Blog) => blog.id === blogId);
-    console.log('blogs:', blogs);
-    console.log('blogId:', blogId);
-    console.log('found blog:', blog);
-
 
     if (!blog) {
         return <NotFound404 />;

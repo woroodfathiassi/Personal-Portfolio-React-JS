@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const BlogsList = () => {
     const { blogs, isLoading } = useContext(BlogsContext);
     // const { isLoading } = useContext(BlogsContext);
-    // const blogs = [];
+    // const blogs: any = [];
 
     if (isLoading) {
             SkeletonBlog();

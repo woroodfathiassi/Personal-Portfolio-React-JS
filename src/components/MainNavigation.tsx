@@ -45,6 +45,7 @@ const MainNavigation: React.FC<MainNavigationProps> = ({menuItems, UlStyle}) => 
                                     title={menuItem.title}
                                     path={menuItem.path}
                                     isEnd={menuItem.isEnd}
+                                    onClick={handleClick}
                                 />
                             ))}
                         </ul>
