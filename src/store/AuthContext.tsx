@@ -82,7 +82,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const handleGoogleSignIn = async () => {
         const { error, data } = await supabase.auth.signInWithOAuth({
             provider: 'google',
-            
+            // options:{
+            //     redirectTo: 
+            // }
+
         });
     
         if (error) {
