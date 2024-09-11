@@ -14,46 +14,30 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "NewsArticle",
-        "headline": "Personal Portfolio | Worood Assi",
-        "image": [
-          "@/assets/blackLogo"
-        ],
-        "author": [{
-            "@type": "Person",
-            "name": "Worood Assi",
-            "url": "https://woroodassi.netlify.app"
-          }],
-          "publisher":
-            [
-              {
-                "name": "Worood Assi",
-                "url": "https://woroodassi.netlify.app"
-              }
-            ]
-      }
-      </script>
-    
-    <!-- Google tag (gtag.js) -->
-    <!-- <script>
-      const MEASUREMENT_ID = 'YOUR_MEASUREMENT_ID'; // Replace with your actual ID
-  
-      // Dynamically create and append the Google Analytics script
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`;
-      document.head.appendChild(script);
-  
-      // Initialize Google Analytics
-      script.onload = () => {
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          window.dataLayer.push(arguments);
+        "@type": "WebSite",
+        "name": "Worood Assi",
+        "url": "https://woroodassi.netlify.app",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.yourwebsite.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
+        "description": "Personal Portfolio | Worood Assi",
+        "inLanguage": "en",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Worood Assi",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "@/assets/blackLogo"
+          }
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Worood Assi"
         }
-        gtag('js', new Date());
-        gtag('config', MEASUREMENT_ID);
-      };
-    </script> -->
+      }
+    </script>
   </head>
   <body class= "dark:bg-black text-black dark:text-white">
     <noscript>

@@ -16,6 +16,7 @@ const HomePage = () => {
     
     return (
         <>
+            <h1 className='hidden'>Worood Assi - Front-end Developer</h1>
             <Helmet>
                 {/* Open Graph Meta Tags */}
                 <title>Personal Website | Worood Assi</title>
