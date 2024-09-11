@@ -11,7 +11,6 @@ interface AccountModalProps {
 
 const AccountModal: React.FC<AccountModalProps> = ({ isOpen, onClose, userImage, userName, userEmail, onLogout }) => {
     if (!isOpen) return null;
-    console.log("User Image URL: ", userImage);
     
     return (
         <div className="absolute mt-40 bg-white border rounded-lg p-5 shadow-lg dark:bg-gray-800 dark:border-zinc-700">

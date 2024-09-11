@@ -9,7 +9,7 @@ import me1 from '@/assets/me1.png';
 const HomePage = () => {
     // document.title = "Personal Website | Worood Assi";
     const navigate = useNavigate();
-
+    
     const handleButtonClick = () => {
         navigate('/projects');
     };

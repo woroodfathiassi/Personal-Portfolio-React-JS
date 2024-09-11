@@ -34,7 +34,6 @@ const Header = () => {
                     const info = await getEmailInfo();
                     setEmailInfo(info);
                     setImage(info.picture); 
-                    console.log('Image: ', image)
                 } catch (error) {
                     console.error('Error fetching email image:', error);
                 }
