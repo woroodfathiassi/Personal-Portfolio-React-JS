@@ -52,5 +52,10 @@
     "tailwindcss": "^3.4.10",
     "typescript": "^5.5.3",
     "vite": "^5.4.1"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "last 2 versions",
+    "iOS >= 12"
+  ]
 }

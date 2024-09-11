@@ -6,6 +6,9 @@ import { resolve } from "path";
 export default defineConfig({
   base: '/',
   plugins: [react()],
+  build: {
+    target: ['es2018'], // Adjust target here
+  },
   css: {
     postcss: {
       plugins: [tailwindcss()],
