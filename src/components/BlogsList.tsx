@@ -4,9 +4,9 @@ import FormattedDate from "@/utils/FormattedDate ";
 import { Link } from "react-router-dom";
 
 const BlogsList = () => {
-    const { blogs, isLoading } = useContext(BlogsContext);
-    // const { isLoading } = useContext(BlogsContext);
-    // const blogs: any = [];
+    // const { blogs, isLoading } = useContext(BlogsContext);
+    const { isLoading } = useContext(BlogsContext);
+    const blogs: any = [];
 
     if (isLoading) {
             SkeletonBlog();
@@ -17,7 +17,7 @@ const BlogsList = () => {
     }
     
     return (
-        <div className="mt-16 sm:mt-20 border border-l-2 border-t-0 border-b-0 border-r-0 border-l-zinc-100 p-1 mb-3 dark:border-l-zinc-700">
+        <div className="animate-fade mt-16 sm:mt-20 border border-l-2 border-t-0 border-b-0 border-r-0 border-l-zinc-100 p-1 mb-3 dark:border-l-zinc-700">
                 {blogs.map((blog) => (
                     <div key={blog.id} className="flex flex-col items-start sm:flex-row">
                         <span className="w-1/5 font-time text-zinc-400 dark:text-zinc-300 pl-3 py-5">{FormattedDate(blog.date)}</span>

@@ -76,7 +76,7 @@ const LoginPage = () => {
     };
     
     return (
-        <div className="container mx-auto py-7 w-3/5">
+        <div className="container mx-auto py-7 w-full md:w-3/5">
             <form ref={form} onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <Input data={{ label: 'Email', type: 'email', name: 'email', value: formData.email }} onChange={handleChange} />
@@ -86,7 +86,7 @@ const LoginPage = () => {
                     <Input data={{ label: 'Password', type: 'password', name: 'password', value: formData.password }} onChange={handleChange} />
                     {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
                 </div>
-                <div className="mb-4">
+                <div className="mb-4 overflow-auto">
                     <ReCAPTCHA
                         sitekey={import.meta.env.VITE_ReCAPTCHA_SITE_KEY}
                         onChange={onChangeReCaptcha}

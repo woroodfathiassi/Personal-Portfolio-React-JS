@@ -33,6 +33,9 @@ const loadGoogleAnalytics = () => {
 
 loadGoogleAnalytics();
 
+// document.addEventListener('contextmenu', function (e) {
+//   e.preventDefault();
+// });
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

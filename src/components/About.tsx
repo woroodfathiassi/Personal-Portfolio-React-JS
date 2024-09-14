@@ -17,7 +17,7 @@ const About = () => {
 
     return(
         <div className='flex max-w-[100%] justify-center items-center my-[5rem] flex-col gap-10 md:flex-row sm:gap-10 '>{/*  justify-center items-center*/}
-            <div className='w-[70%] md-[50%] md:ml-3'>
+            <div className='w-9/10 md-[50%] md:ml-3'>
                 <p className="text-2xl mb-7">About Me:</p>
                 <h2 className='text-4xl font-bold'>
                     <TypedTextCarousel 
@@ -28,7 +28,7 @@ const About = () => {
                     <span className="opacity-20 text-mainColor">|</span>         
                 </h2>
                 <p className='my-7 text-sm text-zinc-600 dark:text-zinc-400'>
-                    I'm Worood Assi. I am an undergraduate computer science student at Birzeit University, in my fourth year. I am eager to expand my skills and knowledge in new technologies, particularly in front-end development with a focus on React. I am passionate about enhancing my learning and integrating into a professional work environment. I am also interested in exploring opportunities that allow me to contribute to innovative projects and collaborate with experienced professionals in the tech industry.
+                    I'm Worood Assi. I am an undergraduate computer science student at Birzeit University, in my fourth year. I am eager to expand my skills and knowledge in new technologies, particularly in front-end development with a focus on React. I have experience building responsive and intuitive web applications with modern technologies such as TypeScript, Tailwind CSS, and HTML. I am passionate about enhancing my learning and integrating into a professional work environment. I am also interested in exploring opportunities that allow me to contribute to innovative projects and collaborate with experienced professionals in the tech industry.
                 </p>
                 <div className="flex">
                     <a href="mailto:woroodassi345@gmail.com" target="_blank"><SiGmail className={aStyle+' hover:text-red-500 dark:hover:text-red-500'} /></a>
@@ -42,7 +42,7 @@ const About = () => {
                     </a>
                 </div>
             </div>
-            <div className='w-[60%] flex justify-center items-center md:w-[50%]'>
+            <div className='w-[80%] flex justify-center items-center md:w-[50%] '>
                 <figure className='w-[20rem] rounded-[1rem_2rem] overflow-hidden'>
                     <img 
                         src={myImage} 

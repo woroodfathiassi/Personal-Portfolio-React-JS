@@ -6,7 +6,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from "react-helmet";
 
 const BlogsPage = () => {
-    document.title = "Blogs | Worood Assi";
     const { isLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -37,8 +36,12 @@ const BlogsPage = () => {
     return (
         <>
             <Helmet>
+            <title>Blogs | Worood Assi - Front-end Developer</title>
+                <meta
+                    name="description"
+                    content="I write about things I learn and things I think about."
+                />
                 {/* Open Graph Meta Tags */}
-                <title>Blogs | Worood Assi</title>
                 <meta property="og:title" content="Blogs | Worood Assi" />
                 <meta property='og:description' content="I write about things I learn and things I think about." />
                 <meta property="og:type" content="website" />
@@ -49,9 +52,8 @@ const BlogsPage = () => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Projects | Worood Assi" />
                 <meta name="twitter:description" content="I write about things I learn and things I think about." />
-                <meta name="twitter:site" content="Worood Assi" />
             </Helmet>
-            <div className="container mx-auto">
+            <div className="container mx-auto ">
                 <div className="">
                     <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl pt-3">Blogs List</h1>
                     <p className="mt-2 text-base text-zinc-600 dark:text-zinc-400">I write about things I learn and things I think about.</p>

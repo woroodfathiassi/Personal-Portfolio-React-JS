@@ -45,7 +45,7 @@ const AppRouter: React.FC = () => {
                 { path: 'projects', element: <ProjectsPage /> },
                 { path: 'contact', element: <Contact /> },
                 {
-                    path: 'login',
+                    path: 'loginUser',
                     element: isLoggedIn ? (
                         <HomePage />
                     ) : (

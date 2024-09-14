@@ -37,8 +37,12 @@ const BlogsDetailsPage: React.FC = () => {
     return (
         <>
             <Helmet>
+                <title>{blog.title} | Worood Assi - Front-end Developer</title>
+                <meta 
+                    name='description'
+                    content={blog.description}
+                />
                 {/* Open Graph Meta Tags */}
-                <title>Personal Website | Worood Assi</title>
                 <meta property="og:title" content={`${blog.title} | Worood Assi`} />
                 <meta property='og:description' content={blog.description} />
                 <meta property="og:type" content="website" />

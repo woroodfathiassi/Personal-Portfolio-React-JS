@@ -4,7 +4,10 @@ import SkillsList from '@/components/SkillsList';
 import ProjectsList from '@/components/ProjectsList';
 import Work from '@/components/Work';
 import { Helmet } from 'react-helmet';
-import me1 from '@/assets/me1.png';
+import blackLogo from '@/assets/blackLogo.png';
+import SchemaMarkup from '@/components/SchemaMarkup';
+
+
 
 const HomePage = () => {
     // document.title = "Personal Website | Worood Assi";
@@ -16,29 +19,34 @@ const HomePage = () => {
     
     return (
         <>
-            <h1 className='hidden'>Worood Assi - Front-end Developer</h1>
+            <h1 className='hidden'>Worood Assi - Frontend Developer</h1>
+            <SchemaMarkup />
             <Helmet>
+                <title>Personal Website | Worood Assi - Front-end Developer</title>
+                <meta
+                    name="description"
+                    content="Front-End Developer with a focus on React.js. Experienced in building responsive and intuitive web applications using modern TypeScript, Tailwind CSS."
+                />
                 {/* Open Graph Meta Tags */}
-                <title>Personal Website | Worood Assi</title>
                 <meta property="og:title" content="Personal Website | Worood Assi" />
-                <meta property='og:description' content='This responsive personal portfolio is built with React, TypeScript, and Tailwind CSS. It effectively showcases my skills, projects, and professional experience.' />
+                <meta property='og:description' content='Worood Assi is a Front-End Developer with a focus on React.js. Experienced in building responsive and intuitive web applications using modern TypeScript, Tailwind CSS, and HTML.' />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://woroodassi.netlify.app" />
-                <meta property="og:image" content={me1} />
+                <meta property="og:image" content={blackLogo} />
                 <meta property="og:site_name" content="Worood Assi" />
 
                 {/* Twitter Meta Tags */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Personal Website | Worood Assi" />
-                <meta name="twitter:description" content="This responsive personal portfolio is built with React, TypeScript, and Tailwind CSS. It effectively showcases my skills, projects, and professional experience." />
-                <meta name="twitter:image" content={me1} />
+                <meta name="twitter:description" content="Worood Assi is a Front-End Developer with a focus on React.js. Experienced in building responsive and intuitive web applications using modern TypeScript, Tailwind CSS, and HTML." />
+                <meta name="twitter:image" content={blackLogo} />
                 <meta name="twitter:site" content="Worood Assi" />
             </Helmet>
-            <div className='container mx-auto py-7'>
+            <div className='container mx-auto py-7 animate-fade'>
                 <About />
             </div>
             <SkillsList />
-            <div className='container mx-auto flex flex-col-reverse gap-2 justify-between items-start lg:flex-row lg:gap-2'>
+            <div className='flex flex-col-reverse justify-between items-start md:container md:mx-auto lg:flex-row lg:gap-2'>
                 <div className='ml-5 lg:w-[50%]'>
                     <ProjectsList inHomePage />
                     <button 

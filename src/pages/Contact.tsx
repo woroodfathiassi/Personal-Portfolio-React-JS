@@ -91,17 +91,20 @@ const Contact = () => {
     return (
         <>
             <Helmet>
+                <title>Contact Us | Worood Assi - Front-end Developer</title>
+                <meta 
+                    name='description'
+                    content='Feel free to contact us, and we will get back to you as soon as possible.'
+                />
                 {/* Open Graph Meta Tags */}
-                <title>Personal Website | Worood Assi</title>
                 <meta property="og:title" content='Contact us | Worood Assi' />
                 <meta property="og:url" content={`https://woroodassi.netlify.app/contact`} />
-
                 {/* Twitter Meta Tags */}
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:title" content='Contact us | Worood Assi' />
             </Helmet>
 
-            <div className="w-4/5 m-auto mt-5 p-3 rounded-md bg-white shadow-lg dark:bg-gray-800 sm:w-3/5 lg:w-2/5">
+            <div className="animate-fade w-4/5 m-auto mt-5 p-3 rounded-md bg-white shadow-lg dark:bg-gray-800 sm:w-3/5 lg:w-2/5">
                 <h1 className="text-center text-2xl font-bold">Contact Us</h1>
                 {submitted ? (
                     <div className="text-center text-green-500">
@@ -123,7 +126,7 @@ const Contact = () => {
                                 <Input data={{ label: 'Message', type: 'textarea', name: 'message', value: formData.message }} onChange={handleChange} />
                                 {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
                             </div>
-                            <div className="mb-4">
+                            <div className="mb-4 overflow-auto">
                                 <ReCAPTCHA
                                     sitekey={import.meta.env.VITE_ReCAPTCHA_SITE_KEY}
                                     onChange={onChange}
