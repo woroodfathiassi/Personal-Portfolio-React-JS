@@ -40,13 +40,13 @@ loadGoogleAnalytics();
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <AuthProvider>
-      <DarkThemeContextProvider>
-        <ProjectContextProvider>
-          <BlogsContextProvider>
+      <ProjectContextProvider>
+        <BlogsContextProvider>
+          <DarkThemeContextProvider>
             <App />
-          </BlogsContextProvider>
-        </ProjectContextProvider>
-      </DarkThemeContextProvider>
+          </DarkThemeContextProvider>
+        </BlogsContextProvider>
+      </ProjectContextProvider>
     </AuthProvider>
   </StrictMode>
 );

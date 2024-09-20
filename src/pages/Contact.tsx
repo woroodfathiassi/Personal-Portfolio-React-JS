@@ -14,6 +14,7 @@ const Contact = () => {
         message: '', 
     });
     const [submitted, setSubmitted] = useState(false);
+    const [sending, setSending] = useState(false);
     const [errors, setErrors] = useState({
         user_name: '',
         user_email: '',
@@ -61,8 +62,8 @@ const Contact = () => {
         }
 
         setErrors(newErrors);
-
         if (valid && form.current) {
+            setSending(true);
             const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
             const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
             const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
@@ -80,6 +81,9 @@ const Contact = () => {
                 })
                 .catch((error) => {
                     console.log('FAILED...', error.text);
+                })
+                .finally(() => {
+                    setSending(false); 
                 });
         }
     }
@@ -104,7 +108,7 @@ const Contact = () => {
                 <meta name="twitter:title" content='Contact us | Worood Assi' />
             </Helmet>
 
-            <div className="animate-fade w-4/5 m-auto mt-5 p-3 rounded-md bg-white shadow-lg dark:bg-gray-800 sm:w-3/5 lg:w-2/5">
+            <div className="animate-fade w-full m-auto mt-5 p-3 rounded-md bg-white shadow-lg dark:bg-gray-800 sm:w-3/5 lg:w-2/5">
                 <h1 className="text-center text-2xl font-bold">Contact Us</h1>
                 {submitted ? (
                     <div className="text-center text-green-500">
@@ -134,7 +138,14 @@ const Contact = () => {
                                 {errors.recaptcha && <p className="text-red-500 text-sm">{errors.recaptcha}</p>}
                             </div >
                             
-                            <input type="submit" name="submit" id="submit" className="bg-mainColor text-zinc-50 w-full rounded-md py-2 my-4" />
+                            <input 
+                                type="submit" 
+                                name="submit" 
+                                id="submit" 
+                                disabled={sending}
+                                value={sending ? 'Sending...' : 'Send Message'}
+                                className="bg-mainColor text-zinc-50 w-full rounded-md py-2 my-4" 
+                            />
                         </form>
                     </div>
                 )}
