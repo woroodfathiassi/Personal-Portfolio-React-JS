@@ -7,8 +7,6 @@ import { Helmet } from 'react-helmet';
 import blackLogo from '@/assets/blackLogo.png';
 import SchemaMarkup from '@/components/SchemaMarkup';
 
-
-
 const HomePage = () => {
     // document.title = "Personal Website | Worood Assi";
     const navigate = useNavigate();

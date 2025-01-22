@@ -11,7 +11,7 @@ interface ProjectContextType {
 const ProjectContext = createContext<ProjectContextType>({
     projects: [],
     isLoading: true,
-    addProject: () => {}, 
+    addProject: () => {},
 });
 
 export function ProjectContextProvider({ children }: { children: ReactNode }) {
@@ -25,10 +25,10 @@ export function ProjectContextProvider({ children }: { children: ReactNode }) {
                 if (data) {
                     setProjects(data);
                 } else {
-                    console.error("No data returned from the API.");
+                    console.error('No data returned from the API.');
                 }
             } catch (error) {
-                console.error("Error fetching projects:", error);
+                console.error('Error fetching projects:', error.message);
             } finally {
                 setLoading(false);
             }
@@ -43,7 +43,7 @@ export function ProjectContextProvider({ children }: { children: ReactNode }) {
     const projectContext: ProjectContextType = {
         projects,
         isLoading,
-        addProject,  
+        addProject,
     };
 
     return (

@@ -1,5 +1,5 @@
 interface ProjectData {
-    id: number;
+    id: string;
     title: string;
     description: string;
     link: string;

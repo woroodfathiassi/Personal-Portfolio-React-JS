@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
     width: calc(100vw - 17px); /* Adjusting for scrollbar width  */
 }

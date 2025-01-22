@@ -9,6 +9,7 @@ import mysql from '@/assets/mysql.png';
 import tw from '@/assets/tw.png';
 import ts from '@/assets/ts.png';
 import react from '@/assets/react.png';
+import net from '@/assets/dotnet.png';
 
 const images = {
     java: java,
@@ -20,14 +21,15 @@ const images = {
     python: python,
     react: react,
     typescript: ts,
-    tailwind: tw
+    tailwind: tw,
+    dotnet: net
 };
 
 const SkillsList = () => {
     return (
         <div id='skills' className='bg-gray-100 my-[5rem] py-[5rem] text-center dark:bg-zinc-800/60'>
             <h2 className='inline-block bg-white rounded-[2rem] py-2 px-5 dark:bg-zinc-600/40'>Skills</h2>
-            <div className="flex flex-wrap gap-[2rem] items-center justify-center m-[3rem]">
+            <div className="flex flex-wrap gap-[1rem] items-center justify-center m-[3rem]">
                 {Object.entries(images).map(([key, image], index) => (
                     <Skill key={index} image={image} title={key} />
                 ))}
