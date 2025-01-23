@@ -3,6 +3,8 @@ import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseKey = import.meta.env.VITE_SUPABASE_KEY
+// const supabaseUrl = ''
+// const supabaseKey = ''
 export const supabase = createClient(supabaseUrl, supabaseKey);
 
 import { db } from './firebase.config';
@@ -12,7 +14,7 @@ import ProjectData from '@/interfaces/ProjectData';
 async function getAllProjecs(): Promise<ProjectData[] | null> {
     try {
         const projectsRef = collection(db, 'Projects');
-        const q = query(projectsRef, orderBy('date', 'desc')); // Adjust field name if needed
+        const q = query(projectsRef, orderBy('date', 'desc'));
         const querySnapshot = await getDocs(q);
 
         const projects: ProjectData[] = querySnapshot.docs.map((doc) => ({
@@ -20,10 +22,11 @@ async function getAllProjecs(): Promise<ProjectData[] | null> {
             ...doc.data(),
         })) as ProjectData[];
 
-        console.table(projects); // Debugging output, remove in production
+        console.table(projects);
         return projects;
-    } catch (error) {
-        console.error('Error fetching projects from Firestore:', error.message);
+    } catch (error: any) {
+        console.error('Error fetching projects from Firestore:', error.code, error.message);
+        if (error.stack) console.error(error.stack); // Log stack trace for debugging
         return null;
     }
 }

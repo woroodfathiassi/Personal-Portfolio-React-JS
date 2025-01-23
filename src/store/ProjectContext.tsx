@@ -27,7 +27,7 @@ export function ProjectContextProvider({ children }: { children: ReactNode }) {
                 } else {
                     console.error('No data returned from the API.');
                 }
-            } catch (error) {
+            } catch (error: any) {
                 console.error('Error fetching projects:', error.message);
             } finally {
                 setLoading(false);
