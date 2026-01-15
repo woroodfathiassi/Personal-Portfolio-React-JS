@@ -3,14 +3,12 @@ import ProjectContext from '@/store/ProjectContext';
 import Project from './Project';
 import ProjectData from '@/interfaces/ProjectData';
 
-const homeProjectsIDs = ['qQk5qWilLx11HvbUFGQy'];
-
 interface ProjectsListProps {
     inHomePage: boolean;
 }
 
 const ProjectsList = ({ inHomePage }: ProjectsListProps) => {
-    const { projects, isLoading } = useContext(ProjectContext);
+    const { projects, isLoading, projectIds } = useContext(ProjectContext);
 
     if (isLoading) {
         return <SkeletonProject />;
@@ -25,10 +23,10 @@ const ProjectsList = ({ inHomePage }: ProjectsListProps) => {
     }
 
     const filteredProjects = inHomePage
-        ? projects.filter((project: ProjectData) => homeProjectsIDs.includes(project.id))
+        ? projects.filter((project: ProjectData) => projectIds.includes(project.id))
         : projects;
 
-    const homeStyle = 'flex flex-col gap-3 w-full mt-10';
+    const homeStyle = 'flex flex-col gap-3 w-full';
     const projectsStyle = 'animate-fade grid gap-3 grid-cols-[auto] mt-16 sm:grid-cols-[auto_auto] lg:grid-cols-[auto_auto_auto]';
 
     return (

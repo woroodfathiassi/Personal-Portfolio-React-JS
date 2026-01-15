@@ -22,11 +22,28 @@ async function getAllProjecs(): Promise<ProjectData[] | null> {
             ...doc.data(),
         })) as ProjectData[];
 
-        console.table(projects);
         return projects;
     } catch (error: any) {
         console.error('Error fetching projects from Firestore:', error.code, error.message);
         if (error.stack) console.error(error.stack); // Log stack trace for debugging
+        return null;
+    }
+}
+
+async function getAllProjectIds(): Promise<string[] | null> {
+    try {
+        const projectsRef = collection(db, 'PojIDs');
+        const snapshot = await getDocs(projectsRef);
+
+        const projectIds: string[] = snapshot.docs.map((doc) => {
+            const data = doc.data();
+            return data.proid;
+        }).filter(Boolean); // optional: filters out any undefined/null values
+
+        return projectIds;
+    } catch (error: any) {
+        console.error('Error fetching projects from Firestore:', error.code, error.message);
+        if (error.stack) console.error(error.stack);
         return null;
     }
 }
@@ -116,4 +133,4 @@ async function addNewBlog(title: string, content: string, description: string, d
 }
 
 
-export { getAllProjecs, getAllMarkdown, addNewProject, addNewBlog };
+export { getAllProjecs, getAllMarkdown, addNewProject, addNewBlog, getAllProjectIds };

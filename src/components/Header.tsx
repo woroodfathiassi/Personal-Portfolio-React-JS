@@ -11,7 +11,8 @@ import DarkThemeButton from './DarkThemeButton';
 const menuItems: { title: string, path: string, isEnd: boolean }[] = [
     { title: 'home', path: '/', isEnd: true },
     { title: 'projects', path: '/projects', isEnd: false },
-    { title: 'blogs', path: '/blogs', isEnd: false },
+    { title: 'skills', path: '/skills', isEnd: false },
+    // { title: 'blogs', path: '/blogs', isEnd: false },
     { title: 'contact', path: '/contact', isEnd: false },
 ];
 

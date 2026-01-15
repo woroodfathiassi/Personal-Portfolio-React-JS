@@ -7,7 +7,7 @@ import dotnet from '@/assets/dotnet.png';
 import resume from '@/assets/Resume/WoroodCV.pdf';
 
 const experience = [
-    [dotnet, 'Back-end Developer', 'Purex Technologies · Internship', 'Dec 2024 - Mar 2025'],
+    [dotnet, 'Back-end Developer', 'Purex Technologies & Gaza Sky Geeks · Internship', 'Dec 2024 - Mar 2025'],
     [quizplus_logo, 'Front-end Developer', 'Quizplus · Internship', 'Jul 2024 - Sep 2024'],
     [bzulogo, 'Full-stack Developer', 'Computer Center - Birzeit University · Internship', 'Feb 2024 - Apr 2024'],
 ];

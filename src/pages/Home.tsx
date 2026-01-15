@@ -1,15 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import About from '@/components/About';
-import SkillsList from '@/components/SkillsList';
 import ProjectsList from '@/components/ProjectsList';
 import Work from '@/components/Work';
 import { Helmet } from 'react-helmet';
 import blackLogo from '@/assets/blackLogo.png';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import ProjectContext from '@/store/ProjectContext';
+import { useContext } from 'react';
 
 const HomePage = () => {
     // document.title = "Personal Website | Worood Assi";
     const navigate = useNavigate();
+    const {projectsCont} = useContext(ProjectContext);
     
     const handleButtonClick = () => {
         navigate('/projects');
@@ -17,10 +19,10 @@ const HomePage = () => {
     
     return (
         <>
-            <h1 className='hidden'>Worood Assi - Frontend Developer</h1>
+            <h1 className='hidden'>Worood Assi - Fullstack Developer</h1>
             <SchemaMarkup />
             <Helmet>
-                <title>Personal Website | Worood Assi - Front-end Developer</title>
+                <title>Personal Website | Worood Assi - Fullstack Developer</title>
                 <meta
                     name="description"
                     content="Front-End Developer with a focus on React.js. Experienced in building responsive and intuitive web applications using modern TypeScript, Tailwind CSS."
@@ -40,10 +42,10 @@ const HomePage = () => {
                 <meta name="twitter:image" content={blackLogo} />
                 <meta name="twitter:site" content="Worood Assi" />
             </Helmet>
-            <div className='container mx-auto py-7 animate-fade'>
+            <div className='container mx-auto animate-fade'>
                 <About />
             </div>
-            <SkillsList />
+
             <div className='flex flex-col-reverse justify-between items-start md:container md:mx-auto lg:flex-row lg:gap-2'>
                 <div className='ml-5 lg:w-[50%]'>
                     <ProjectsList inHomePage />
@@ -51,7 +53,7 @@ const HomePage = () => {
                         onClick={handleButtonClick}
                         className='rounded-md bg-mainColor my-5 px-5 py-3 text-base font-medium text-white hover:bg-opacity-80 dark:bg-mainColor  dark:text-white dark:hover:bg-opacity-80'
                     >
-                        Show more
+                        Show all projects ({projectsCont})
                     </button>
                 </div>
                 <div className='ml-5 lg:w-[$0%]'>

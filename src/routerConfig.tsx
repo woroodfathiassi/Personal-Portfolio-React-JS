@@ -9,6 +9,7 @@ import BlogsDetailsPage from './pages/BlogsDetails';
 import NotFound404 from './pages/NotFound404';
 import AuthContext from '@/store/AuthContext';
 import { SkeletonNewBlog } from './pages/NewBlog';
+import SkillsPage from "@/pages/Skills";
 
 // Lazy-loaded components
 // const BlogsPage = React.lazy(() => import('./pages/Blogs'));
@@ -44,6 +45,7 @@ const AppRouter: React.FC = () => {
                 },
                 { path: 'projects', element: <ProjectsPage /> },
                 { path: 'contact', element: <Contact /> },
+                { path: 'skills', element: <SkillsPage /> },
                 {
                     path: 'loginUser',
                     element: isLoggedIn ? (
